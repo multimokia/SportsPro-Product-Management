@@ -6,4 +6,8 @@
     <PackageReference Include="dotenv" Version="0.0.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.1" />
   </ItemGroup>
+  <Target Name="SCSSToCSS" BeforeTargets="Build">
+    <Exec Command="mkdir $(ProjectDir)wwwroot/css" Condition="!Exists('$(ProjectDir)wwwroot/css')"/>
+    <Exec Command="sass --no-source-map ./Styles/site.scss ./wwwroot/css/site.css"/>
+  </Target>
 </Project>
