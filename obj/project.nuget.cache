@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Hg+TJQ4E+yOz07BcoQBY2gUNxlaNr637YYn62IR3GDafoSaGvh0zCcSizrQFiYUQPQwiF8uDFfavhRABPfqQ3Q==",
+  "dgSpecHash": "uZH+ptLpkFFssxo8zb43Q1rYi0MIgS042r8v9M5szu80IpGh1g2y2c8gdj2drlHSHcEHKMdMYnIDgJm9mBk6IA==",
   "success": true,
   "projectFilePath": "D:\\Documents\\GitHub\\GBC\\Semester-4\\Web App Dev (COMP-2139)\\assignments\\assignment1\\assignment1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\multimokia\\.nuget\\packages\\dotenv\\0.0.1.1\\dotenv.0.0.1.1.nupkg.sha512",
+    "C:\\Users\\multimokia\\.nuget\\packages\\dotenv.net\\3.1.1\\dotenv.net.3.1.1.nupkg.sha512",
     "C:\\Users\\multimokia\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\multimokia\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\multimokia\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
