@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+
+using assignment1.Models;
 
 namespace assignment1
 {
@@ -23,7 +26,21 @@ namespace assignment1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddRouting(
+                options => {
+                    options.LowercaseUrls=true;
+                    options.AppendTrailingSlash=true;
+                }
+            );
+
             services.AddControllersWithViews();
+
+            //DB Contexts
+            services.AddDbContext<ProductContext>(
+                options => options.UseSqlServer(
+                    @"Server=(localdb)\\mssqllocaldb;Database=Products;Trusted_Connection=True;MultipleActiveResultSets=True"
+                )
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,11 +58,8 @@ namespace assignment1
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
