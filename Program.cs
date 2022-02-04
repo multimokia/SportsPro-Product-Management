@@ -7,12 +7,18 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
+using dotenv.net;
 namespace assignment1
 {
     public class Program
     {
+        public static IDictionary<string, string> envVars = new Dictionary<string, string>();
+
         public static void Main(string[] args)
         {
+            envVars = DotEnv.Read();
+            Console.WriteLine($"User: {envVars["MSSQL_USER"]} Password: {envVars["MSSQL_PASSWORD"]}");
+
             CreateHostBuilder(args).Build().Run();
         }
 
