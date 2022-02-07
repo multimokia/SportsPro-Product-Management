@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace assignment1.Models
 {
@@ -6,6 +7,7 @@ namespace assignment1.Models
     /// Base class for a person.
     /// This class should be inherited by upper level classes which need to store personal information.
     /// </summary>
+    [NotMapped]
     public abstract class Person
     {
         /// <summary>
