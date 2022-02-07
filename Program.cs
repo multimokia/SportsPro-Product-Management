@@ -17,7 +17,7 @@ namespace assignment1
         public static void Main(string[] args)
         {
             envVars = DotEnv.Read();
-            Console.WriteLine($"User: {envVars["MSSQL_USER"]} Password: {envVars["MSSQL_PASSWORD"]}");
+
 
             CreateHostBuilder(args).Build().Run();
         }

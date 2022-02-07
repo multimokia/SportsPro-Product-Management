@@ -9,13 +9,15 @@ namespace assignment1.Models
 
         public DbSet<Product> Product { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Product>().ToTable("Product");
-        }
-
         public DbSet<assignment1.Models.Customer> Customer { get; set; }
 
         public DbSet<assignment1.Models.Technician> Technician { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>().ToTable("Product");
+            modelBuilder.Entity<Customer>().ToTable("Customer");
+            modelBuilder.Entity<Technician>().ToTable("Technician");
+        }
+
     }
 }
