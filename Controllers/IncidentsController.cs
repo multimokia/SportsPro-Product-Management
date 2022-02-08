@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using assignment1.Models;
+using System.Web;
+
 
 namespace assignment1.Controllers
 {
@@ -45,6 +47,8 @@ namespace assignment1.Controllers
         // GET: Incidents/Create
         public IActionResult Create()
         {
+            //List<Customer> customerInfo = new List<Customer>();
+            //ViewBag.Customers = customerInfo;
             return View();
         }
 

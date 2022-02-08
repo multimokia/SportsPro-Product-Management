@@ -7,7 +7,7 @@ namespace assignment1.Models
     {
         [Key]
         [Required(ErrorMessage="Product code is required")]
-        public string ProductCode { get; set; }
+        public string ProductCode { get; set; } //this is the product ID 
 
         [Required(ErrorMessage="Product name is required")]
         public string Name { get; set; }
