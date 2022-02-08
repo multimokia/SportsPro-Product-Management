@@ -38,7 +38,7 @@ namespace assignment1
             //DB Contexts
             services.AddDbContext<ProductContext>(
                 options => options.UseSqlServer(
-                    @"Server=(localdb)\\mssqllocaldb;Database=Products;Trusted_Connection=True;MultipleActiveResultSets=True"
+                    @"Server=127.0.0.1;Database=master;User=sa;Password='1234adm!n4321';"
                 )
             );
         }
