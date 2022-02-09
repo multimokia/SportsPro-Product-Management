@@ -38,7 +38,7 @@ namespace assignment1
             //DB Contexts
             services.AddDbContext<ProductContext>(
                 options => options.UseSqlServer(
-                    @"Data Source=DEFINITELY-NOT-\SQLEXPRESS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+                    Configuration.GetConnectionString("ProductContext")
                 )
             );
         }
