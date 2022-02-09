@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using assignment1.Models;
+using assignment1.ViewModels;
+
+
 
 namespace assignment1.Controllers
 {

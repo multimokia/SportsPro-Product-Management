@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using assignment1.Models;
 using System.Web;
-
+using assignment1.ViewModels;
 
 namespace assignment1.Controllers
 {
@@ -47,9 +47,8 @@ namespace assignment1.Controllers
         // GET: Incidents/Create
         public IActionResult Create()
         {
-            //List<Customer> customerInfo = new List<Customer>();
-            //ViewBag.Customers = customerInfo;
-            return View();
+            /*var model = new IncidentViewModel();*/
+            return View(/*model*/);
         }
 
         // POST: Incidents/Create
@@ -57,10 +56,13 @@ namespace assignment1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IncidentId,Title,Description,DateOpened,DateClosed")] Incident incident)
+        public async Task<IActionResult> Create(/*IncidentViewModel model,*/[Bind("IncidentId,Title,Description,DateOpened,DateClosed")] Incident incident)
         {
+
             if (ModelState.IsValid)
             {
+                //var msg = model.Customer + " selected";
+                //return RedirectToAction("IndexSuccess", new { message = msg });
                 _context.Add(incident);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
