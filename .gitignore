@@ -6,6 +6,9 @@
 *.user
 *.sln.docstates
 
+appSettings.Local.json
+
+
 .vs/
 .vscode/
 
