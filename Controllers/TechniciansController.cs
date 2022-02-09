@@ -53,7 +53,7 @@ namespace assignment1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TechnicianId,FirstName,LastName,StreetAddress,City,PostalCode,Country,EmailAddress,PhoneNumber")] Technician technician)
+        public async Task<IActionResult> Create([Bind("TechnicianId,Name,StreetAddress,City,PostalCode,Country,EmailAddress,PhoneNumber")] Technician technician)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace assignment1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("TechnicianId,FirstName,LastName,StreetAddress,City,PostalCode,Country,EmailAddress,PhoneNumber")] Technician technician)
+        public async Task<IActionResult> Edit(long id, [Bind("TechnicianId,Name,StreetAddress,City,PostalCode,Country,EmailAddress,PhoneNumber")] Technician technician)
         {
             if (id != technician.TechnicianId)
             {

@@ -11,16 +11,10 @@ namespace assignment1.Models
     public abstract class Person
     {
         /// <summary>
-        /// First name of the person
-        /// </summary>
-        [Required(ErrorMessage="First name is required")]
-        public string FirstName { get; set; }
-
-        /// <summary>
         /// Last name of the person
         /// </summary>
-        [Required(ErrorMessage="Last name is required")]
-        public string LastName { get; set; }
+        [Required(ErrorMessage="Name is required")]
+        public string Name { get; set; }
 
         /// <summary>
         /// Street address of the person, (no country/city/postal code)
