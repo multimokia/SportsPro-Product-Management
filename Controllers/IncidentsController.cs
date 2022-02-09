@@ -34,8 +34,8 @@ namespace assignment1.Controllers
                 return NotFound();
             }
 
-            var incident = await _context.Incident
-                .FirstOrDefaultAsync(m => m.IncidentId == id);
+            var incident = await _context.Incident.FirstOrDefaultAsync(m => m.IncidentId == id);
+
             if (incident == null)
             {
                 return NotFound();
@@ -48,7 +48,7 @@ namespace assignment1.Controllers
         public IActionResult Create()
         {
             /*var model = new IncidentViewModel();*/
-            return View(/*model*/);
+            return View(_context.Incident.ToList());
         }
 
         // POST: Incidents/Create
@@ -56,7 +56,9 @@ namespace assignment1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(/*IncidentViewModel model,*/[Bind("IncidentId,Title,Description,DateOpened,DateClosed")] Incident incident)
+        public async Task<IActionResult> Create(
+            [Bind("IncidentId,Title,Description,DateOpened,DateClosed")] Incident incident
+        )
         {
 
             if (ModelState.IsValid)

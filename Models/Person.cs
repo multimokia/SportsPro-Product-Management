@@ -14,6 +14,7 @@ namespace assignment1.Models
         /// Last name of the person
         /// </summary>
         [Required(ErrorMessage="Name is required")]
+        [Display]
         public string Name { get; set; }
 
         /// <summary>
