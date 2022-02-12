@@ -10,7 +10,14 @@ namespace assignment1.ViewModels
 
         public List<Customer> Customers { get; } = new List<Customer>
         {
-            new Customer { City = "Toronto", Country = "Canada", CustomerId = 1, EmailAddress = "aggra", Name = "Test Test", PhoneNumber = "25436253", PostalCode = "gsrge", StreetAddress = " 23424 2" }
+            new Customer { City = "Toronto", 
+                Country = "Canada", 
+                CustomerId = 1, 
+                EmailAddress = "aggra", 
+                Name = "Test Test", 
+                PhoneNumber = "25436253", 
+                PostalCode = "gsrge", 
+                StreetAddress = " 23424 2" }
         };
     }
 }
