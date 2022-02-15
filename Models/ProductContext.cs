@@ -6,10 +6,11 @@ namespace assignment1.Models
     public class ProductContext : DbContext
     {
         public ProductContext(DbContextOptions<ProductContext> options): base(options) { }
-        public DbSet<assignment1.Models.Product> Product { get; set; }
-        public DbSet<assignment1.Models.Customer> Customer { get; set; }
-        public DbSet<assignment1.Models.Technician> Technician { get; set; }
-        public DbSet<assignment1.Models.Incident> Incident { get; set; }
+        public DbSet<assignment1.Models.Product> Products { get; set; }
+        public DbSet<assignment1.Models.Customer> Customers { get; set; }
+        public DbSet<assignment1.Models.Technician> Technicians { get; set; }
+        public DbSet<assignment1.Models.Incident> Incidents { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>().ToTable("Product");

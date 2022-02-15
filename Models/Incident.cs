@@ -1,8 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
-using System.ComponentModel;
-
 
 namespace assignment1.Models
 {
@@ -13,9 +10,11 @@ namespace assignment1.Models
         public long IncidentId { get; set; }
 
         [Required(ErrorMessage = "Customer is required")]
+        public long CustomerId { get; set;}
         public Customer Customer { get; set;}
 
         [Required(ErrorMessage = "Product is required")]
+        public string ProductCode { get; set; }
         public Product Product { get; set; }
 
         [Required(ErrorMessage = "Title is required")]
@@ -24,7 +23,10 @@ namespace assignment1.Models
         [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
 
+        public long TechnicianId { get; set; }
+        #nullable enable
         public Technician? Technician { get; set; }
+        #nullable restore
 
         public DateTime? DateOpened { get; set; }
         [Required(ErrorMessage = "Date Closed is required")]

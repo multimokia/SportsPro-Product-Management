@@ -23,7 +23,7 @@ namespace assignment1.Controllers
         // GET: Incidents
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Incident.ToListAsync());
+            return View(await _context.Incidents.ToListAsync());
         }
 
         // GET: Incidents/Details/5
@@ -34,7 +34,7 @@ namespace assignment1.Controllers
                 return NotFound();
             }
 
-            var incident = await _context.Incident.FirstOrDefaultAsync(m => m.IncidentId == id);
+            var incident = await _context.Incidents.FirstOrDefaultAsync(m => m.IncidentId == id);
 
             if (incident == null)
             {
@@ -45,10 +45,14 @@ namespace assignment1.Controllers
         }
 
         // GET: Incidents/Create
+        [HttpGet]
         public IActionResult Create()
         {
-            /*var model = new IncidentViewModel();*/
-            return View(_context.Incident.ToList());
+            ViewBag.Customers = _context.Customers.OrderBy((x) => x.Name).ToList();
+            ViewBag.Products = _context.Products.OrderBy((x) => x.Name).ToList();
+            ViewBag.Technicians = _context.Technicians.OrderBy((x) => x.Name).ToList();
+
+            return View(new Incident());
         }
 
         // POST: Incidents/Create
@@ -60,11 +64,12 @@ namespace assignment1.Controllers
             [Bind("IncidentId,Title,Description,DateOpened,DateClosed")] Incident incident
         )
         {
+            ViewBag.Customers = _context.Customers.OrderBy((x) => x.Name).ToList();
+            ViewBag.Products = _context.Products.OrderBy((x) => x.Name).ToList();
+            ViewBag.Technicians = _context.Technicians.OrderBy((x) => x.Name).ToList();
 
             if (ModelState.IsValid)
             {
-                //var msg = model.Customer + " selected";
-                //return RedirectToAction("IndexSuccess", new { message = msg });
                 _context.Add(incident);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,11 +85,15 @@ namespace assignment1.Controllers
                 return NotFound();
             }
 
-            var incident = await _context.Incident.FindAsync(id);
+            var incident = await _context.Incidents.FindAsync(id);
             if (incident == null)
             {
                 return NotFound();
             }
+
+            ViewBag.Customers = _context.Customers.OrderBy((x) => x.Name).ToList();
+            ViewBag.Products = _context.Products.OrderBy((x) => x.Name).ToList();
+            ViewBag.Technicians = _context.Technicians.OrderBy((x) => x.Name).ToList();
             return View(incident);
         }
 
@@ -99,6 +108,10 @@ namespace assignment1.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.Customers = _context.Customers.OrderBy((x) => x.Name).ToList();
+            ViewBag.Products = _context.Products.OrderBy((x) => x.Name).ToList();
+            ViewBag.Technicians = _context.Technicians.OrderBy((x) => x.Name).ToList();
 
             if (ModelState.IsValid)
             {
@@ -131,8 +144,7 @@ namespace assignment1.Controllers
                 return NotFound();
             }
 
-            var incident = await _context.Incident
-                .FirstOrDefaultAsync(m => m.IncidentId == id);
+            var incident = await _context.Incidents.FirstOrDefaultAsync(m => m.IncidentId == id);
             if (incident == null)
             {
                 return NotFound();
@@ -146,15 +158,15 @@ namespace assignment1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long id)
         {
-            var incident = await _context.Incident.FindAsync(id);
-            _context.Incident.Remove(incident);
+            var incident = await _context.Incidents.FindAsync(id);
+            _context.Incidents.Remove(incident);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool IncidentExists(long id)
         {
-            return _context.Incident.Any(e => e.IncidentId == id);
+            return _context.Incidents.Any(e => e.IncidentId == id);
         }
     }
 }

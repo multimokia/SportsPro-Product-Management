@@ -19,14 +19,42 @@
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Product" class="control-label"></label>
-                <select asp-for="Product" asp-itemscope="Model.Products"></select>
+                <label asp-for="Customer" class="control-label"></label>
+                <select asp-for="Customer">
+                    <option value="">Select a customer</option>
+                @foreach (Customer customer in ViewBag.Customers)
+                {
+                    <option value="@customer.CustomerId">@customer.Name</option>
+                }
+                </select>
                 <span asp-validation-for="Customer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product" class="control-label"></label>
+                <select asp-for="Product">
+                    <option value="">Select a product</option>
+                @foreach (Product product in ViewBag.Products)
+                {
+                    <option value="@product.ProductCode">@product.Name</option>
+                }
+                </select>
+                <span asp-validation-for="Product" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Technician" class="control-label"></label>
+                <select asp-for="Technician">
+                    <option value="">Select a technician</option>
+                @foreach (Technician technician in ViewBag.Technicians)
+                {
+                    <option value="@technician.TechnicianId">@technician.Name</option>
+                }
+                </select>
+                <span asp-validation-for="Technician" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DateOpened" class="control-label"></label>
