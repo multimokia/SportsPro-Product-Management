@@ -3,11 +3,16 @@
 @{
     ViewData["Title"] = "Products Page";
 }
-
-<h1>Index</h1>
+  <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+     <img src="https://img.icons8.com/external-fauzidea-gradient-fauzidea/64/000000/external-sport-back-to-school-fauzidea-gradient-fauzidea.png"   style="width:50px; margin: 10px auto; display:block;"/>
+    <h1 class="title-custom display-4">PRODUCTS</h1>
+    <p class="lead" style="text-align:center;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+  </div>
+</div>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-primary btn-md" asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -37,9 +42,9 @@
                 @Html.DisplayFor(modelItem => item.ReleaseDate)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ProductCode">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProductCode">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProductCode">Delete</a>
+                <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.ProductCode">Edit</a> |
+                <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-id="@item.ProductCode">Details</a> |
+                <a class="btn btn-primary btn-sm" asp-action="Delete" asp-route-id="@item.ProductCode">Delete</a>
             </td>
         </tr>
 }
