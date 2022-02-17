@@ -2,46 +2,183 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">SportsPro Technical Support</h1>
-    <h3>Sports management software for the sports enthusiast</h3>
-<table class="justBasicTable">
-    <tbody>
-        <tr>
-            <th>
-                <h2>Admin</h2>
-            </th>
-        </tr>
-        <tr>
-            <td>
-                <a href="@Url.Content("~/products")">Manage Products</a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <a href="@Url.Content("~/technicians")">Manage Technicians</a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <a href="@Url.Content("~/customers")">Manage Customer</a>
-            </td>
-        </tr>
-        <tr> 
-            <td>
-                <a href="@Url.Content("~/incidents")">Manage incidents</a>
-            </td>
-        </tr>
-        <tr>
-            <th>
-                <h2>Technicians</h2>
-            </th>
-        </tr>
-        <tr>
-            <td>
-                 <a href="@Url.Content("~/incidents")">Update Incidents</a>
-            </td>
-        </tr>
-    </tbody>        
-</table> 
+
+<h1>SPORTS</h1>
+<h1>PRO</h1>
+<div class  = "wrapping_">
+    <div id="parallelogram_red"></div>
+<div id="parallelogram_green"></div>
+<div id="parallelogram_blue"></div>
 </div>
+
+<h2>EVERY SPORTING NEED</h2>
+
+<div class="container">
+    <div class="card-group">
+  <div class="card" style="border:none;box-shadow:none; ">
+    <div class="card-body">
+      <h5 class="card-title">Manage Products</h5>
+      <p class="card-text">The GBC Sports Pro application requires a Products page that allows admin users to view, 
+                                        edit and delete existing products.</p>
+      <a asp-controller="Products" asp-action="Index" class="btn btn-primary">View Now</a>
+    </div>
+  </div>
+  <div class="card" style="border:none; box-shadow:none;">
+    <div class="card-body">
+      <h5 class="card-title">Manage Technicians</h5>
+      <p class="card-text">The Business Analysts have provided a wireframe mockup of a potential Manage Technicians </p>
+      <a asp-controller="Technicians" asp-action="Index"  class="btn btn-primary">View Now</a>
+    </div>
+  </div>
+  <div class="card" style="border:none; box-shadow:none;">
+    <div class="card-body">
+      <h5 class="card-title">Manage Customers</h5>
+      <p class="card-text">The Business Analysts have provided a wireframe mockup of a potential Manage Customers</p>
+      <a asp-controller="Customers" asp-action="Index" class="btn btn-primary">View Now</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class  = " container" >
+<div class  = "wrapping_sqare ">
+    <div id="sqare_red"></div>
+<div id="sqare_green"></div>
+<div id="sqare_blue"></div>
+</div>
+</div>
+
+<div class="container">
+    <div class="card-group">
+  <div class="card" style="border:none;box-shadow:none; ">
+    <div class="card-body">
+      <h5 class="card-title">Manage Incidents</h5>
+      <p class="card-text">The Business Analysts have also provided a wireframe mockup of a potential Manage</p>
+      <a asp-controller="Incidents" asp-action="Index" class="btn btn-primary">View Now</a>
+    </div>
+  </div>
+
+  <div class="card" style="border:none; box-shadow:none;">
+    <div class="card-body">
+      <h5 class="card-title">Manage Registrations</h5>
+      <p class="card-text">Registation our sport app click the botton to view details</p>
+      <a asp-controller="Registrations" asp-action="Index" class="btn btn-primary">View Now</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+
+  <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="title-custom display-4">Manage our Technicians</h1>
+    <p class="lead" style="text-align:center;">The Business Analysts have also provided a wireframe mockup of a potential Add/Edit Incidents</p>
+        <div class="button_center">
+            <a asp-controller="Registrations" asp-action="Index" class="btn btn-primary">Update Incident</a>
+        </div>  
+</div>
+</div>
+
+
+
+<div class="testimonial text-center row d-flex align-items-center" style="padding-top:0; padding-bottom:0; background:url(https://images.unsplash.com/photo-1511877150299-3622fc88aee3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);">
+        <div class="container-fluid" style="background-color:rgba(0,0,0,0.7);">
+            <div class="heading white-heading">
+                Testimonial
+            </div>
+            <p>♬☻☻♫•*¨*•.¸♬☻☻♫•*¨*•.¸</p>
+            <div id="testimonial4" class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x" data-ride="carousel" data-pause="hover" data-interval="5000" data-duration="2000">
+             
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        <div class="testimonial4_slide">
+                            <img src="https://cdn-icons.flaticon.com/png/512/2195/premium/2195340.png?token=exp=1645068083~hmac=a7dc8dfc25c0b25415fa7df6e0e6874c" class="img-circle img-responsive" />
+                            <h4> <br /> Elon Musk</h4>
+                            <p>★★★★★</p>
+                            <p>GBC Application is easy to use and fast. This is comfortable to use. I love this app.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial4_slide">
+                            <img src="https://cdn-icons.flaticon.com/png/512/2195/premium/2195371.png?token=exp=1645068096~hmac=f40e425599c23f785f290fd540b58a3c" class="img-circle img-responsive" />
+                            <h4><br />Elizabeth Holmes</h4>
+                             <p>★★★★★</p>
+                            <p>I am a recruiter I love this app and use every day to do sport customer managements. </p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial4_slide">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2784/2784403.png" class="img-circle img-responsive" />
+                            <h4><br />John Doe</h4>
+                            <p>★★★★★</p>
+                            <p>I am a student, and This is so good to manage our school sport team!</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#testimonial4" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#testimonial4" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+<div class="container gutter" >
+  <div class="row row-cols-2">
+    <div class="col bg-colored image-block1">
+    </div>
+    <div class="col bg-colored">  
+   <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="title-custom display-4">The Manage Incidents Page </h1>
+    <p class="lead" style="text-align:center;">
+        When the user clicks the Manage Incidents link from the Home page or the Incidents link from the navbar, the 
+        application should display the Incident Manager page.
+    </p>
+  </div>
+</div>
+</div>
+
+    <div class="col bg-colored">
+  <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="title-custom display-4">Add/Edit Customers Page</h1>
+    <p class="lead" style="text-align:center;">
+        The application should display the Customer Manager page when the user completes or cancels an operation for 
+        adding, editing, or deleting a customer.
+    </p>
+  </div>
+  </div>
+  </div>
+
+    <div class="col bg-colored  image-block2">  
+    </div>
+
+    <div class="col bg-colored image-block3">
+    </div>
+    <div class="col bg-colored">  
+   <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="title-custom display-4">The Manage Technician Page</h1>
+    <p class="lead" style="text-align:center;">
+    When the user clicks the Manage Technicians link on the Home page or the Technicians link in the navbar, the 
+    application should display the Technician Manager page.
+    </p>
+  </div>
+</div>
+</div>
+
+  </div>
+</div>
+
+
