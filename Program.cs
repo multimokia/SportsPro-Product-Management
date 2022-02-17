@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+
 
 using dotenv.net;
 namespace assignment1
@@ -30,3 +32,5 @@ namespace assignment1
                 });
     }
 }
+
+
