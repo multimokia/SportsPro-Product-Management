@@ -15,7 +15,7 @@ a.navbar-brand {
 /* Provide sufficient contrast against white background */
 a {
     color: #ffffff;
-    text-decoration:none;
+    text-decoration: none;
 }
 
 .btn-primary {
@@ -23,6 +23,13 @@ a {
     background-color: #1b6ec2;
     border-color: #1F51FF;
 }
+
+.btn-form {
+    color: #fff;
+    background-image: linear-gradient(#52565a, #3a3f44 60%, #353a3f);
+    border-color: #313233;
+}
+
 
 /* Green Navigation Design
 -------------------------------------------------- */
@@ -74,11 +81,11 @@ nav {
 container-fluid
 /* Jumbo titles
 -------------------------------------------------- */
-.container-fluid{
-   max-width:100%;
-   margin:0;
-   padding:0;
-   overflow:hidden;
+.container-fluid {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
 h1 {
@@ -149,8 +156,8 @@ h2 {
 }
 
 
-.form_wrapper{
-margin-bottom:0.5rem;
+.form_wrapper {
+    margin-bottom: 0.5rem;
 }
 
 /*Card and Table Custom Theme
@@ -162,7 +169,6 @@ margin-bottom:0.5rem;
 }
 
 .card_grid {
-   
     border-radius: 0;
     background: #2b2b2b;
 }
@@ -176,7 +182,7 @@ margin-bottom:0.5rem;
 table {
     border: 1px solid #B026FF !important;
     box-shadow: 2px -1px 10px #1f51ff;
-    text-align:center;
+    text-align: center;
 }
 
 #sqare_red {
@@ -201,15 +207,12 @@ table {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin:0;
-  
-   
+    margin: 0;
 }
 
 
 
 .bg-colored {
-
     width: 50%;
     height: 30rem;
     display: flex;
@@ -219,10 +222,10 @@ table {
 }
 
 
-.button_center{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.button_center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 2rem;
 }
 
@@ -242,11 +245,10 @@ table {
 
 .form-control-label {
     margin-bottom: 0;
-    
 }
 
-.control-label{
-    font-size:1.2rem;
+.control-label {
+    font-size: 1.2rem;
 }
 
 
@@ -263,19 +265,19 @@ button {
 }
 
 .form_box {
-    padding:3rem;
+    padding: 3rem;
 }
 
 
-    input:focus,
-    textarea:focus {
-        -moz-box-shadow: none !important;
-        -webkit-box-shadow: none !important;
-        box-shadow: none !important;
-        border: 1px solid #00BCD4;
-        outline-width: 0;
-        font-weight: 400
-    }
+input:focus,
+textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #00BCD4;
+    outline-width: 0;
+    font-weight: 400
+}
 
 .btn-block {
     text-transform: uppercase;
@@ -289,9 +291,9 @@ button {
         color: #fff !important
     }
 
-.button_center{
-display:flex;
-justify-content:center;
+.button_center {
+    display: flex;
+    justify-content: center;
 }
 
 /* Sticky footer styles
