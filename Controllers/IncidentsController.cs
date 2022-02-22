@@ -60,19 +60,19 @@ namespace assignment1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(
-            [Bind("IncidentId,Title,Description,DateOpened,DateClosed")] Incident incident
-        )
+        public async Task<IActionResult> Create(Incident incident)
         {
-            ViewBag.Customers = _context.Customers.OrderBy((x) => x.Name).ToList();
-            ViewBag.Products = _context.Products.OrderBy((x) => x.Name).ToList();
-            ViewBag.Technicians = _context.Technicians.OrderBy((x) => x.Name).ToList();
-
             if (ModelState.IsValid)
             {
                 _context.Add(incident);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                ViewBag.Customers = _context.Customers.OrderBy((x) => x.Name).ToList();
+                ViewBag.Products = _context.Products.OrderBy((x) => x.Name).ToList();
+                ViewBag.Technicians = _context.Technicians.OrderBy((x) => x.Name).ToList();
             }
             return View(incident);
         }
