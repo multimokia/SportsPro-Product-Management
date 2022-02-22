@@ -41,6 +41,9 @@ namespace assignment1.Controllers
                 return NotFound();
             }
 
+            ViewBag.Customers = _context.Customers.OrderBy((x) => x.Name).ToList();
+            ViewBag.Products = _context.Products.OrderBy((x) => x.Name).ToList();
+            ViewBag.Technicians = _context.Technicians.OrderBy((x) => x.Name).ToList();
             return View(incident);
         }
 

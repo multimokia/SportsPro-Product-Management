@@ -56,7 +56,7 @@ namespace assignment1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CustomerId,Name,StreetAddress,City,PostalCode,Country,EmailAddress,PhoneNumber")] Customer customer)
+        public async Task<IActionResult> Create(Customer customer)
         {
             if (ModelState.IsValid)
             {
