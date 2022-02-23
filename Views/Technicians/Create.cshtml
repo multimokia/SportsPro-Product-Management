@@ -34,8 +34,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="Country" class="control-label"></label>
-                <input asp-for="Country" class="form-control" />
-                <span asp-validation-for="Country" class="text-danger"></span>
+                <select asp-for="Country">
+                    <option value="">Select your country</option>
+                @foreach (string country in ViewBag.Countries)
+                {
+                    <option value="@country">@country</option>
+                }
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="EmailAddress" class="control-label"></label>

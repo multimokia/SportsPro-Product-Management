@@ -45,6 +45,7 @@ namespace assignment1.Controllers
         // GET: Technicians/Create
         public IActionResult Create()
         {
+            ViewBag.Countries = CustomersController.Countries;
             return View();
         }
 
@@ -61,6 +62,8 @@ namespace assignment1.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            ViewBag.Countries = CustomersController.Countries;
             return View(technician);
         }
 
@@ -77,6 +80,8 @@ namespace assignment1.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.Countries = CustomersController.Countries;
             return View(technician);
         }
 
@@ -112,6 +117,8 @@ namespace assignment1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
+            ViewBag.Countries = CustomersController.Countries;
             return View(technician);
         }
 
