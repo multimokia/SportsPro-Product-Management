@@ -21,7 +21,7 @@ namespace assignment1.Controllers
         // GET: Technicians
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Technician.ToListAsync());
+            return View(await _context.Technicians.ToListAsync());
         }
 
         // GET: Technicians/Details/5
@@ -32,7 +32,7 @@ namespace assignment1.Controllers
                 return NotFound();
             }
 
-            var technician = await _context.Technician
+            var technician = await _context.Technicians
                 .FirstOrDefaultAsync(m => m.TechnicianId == id);
             if (technician == null)
             {
@@ -45,6 +45,7 @@ namespace assignment1.Controllers
         // GET: Technicians/Create
         public IActionResult Create()
         {
+            ViewBag.Countries = CustomersController.Countries;
             return View();
         }
 
@@ -61,6 +62,8 @@ namespace assignment1.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            ViewBag.Countries = CustomersController.Countries;
             return View(technician);
         }
 
@@ -72,11 +75,13 @@ namespace assignment1.Controllers
                 return NotFound();
             }
 
-            var technician = await _context.Technician.FindAsync(id);
+            var technician = await _context.Technicians.FindAsync(id);
             if (technician == null)
             {
                 return NotFound();
             }
+
+            ViewBag.Countries = CustomersController.Countries;
             return View(technician);
         }
 
@@ -112,6 +117,8 @@ namespace assignment1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
+            ViewBag.Countries = CustomersController.Countries;
             return View(technician);
         }
 
@@ -123,7 +130,7 @@ namespace assignment1.Controllers
                 return NotFound();
             }
 
-            var technician = await _context.Technician
+            var technician = await _context.Technicians
                 .FirstOrDefaultAsync(m => m.TechnicianId == id);
             if (technician == null)
             {
@@ -138,15 +145,15 @@ namespace assignment1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long id)
         {
-            var technician = await _context.Technician.FindAsync(id);
-            _context.Technician.Remove(technician);
+            var technician = await _context.Technicians.FindAsync(id);
+            _context.Technicians.Remove(technician);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool TechnicianExists(long id)
         {
-            return _context.Technician.Any(e => e.TechnicianId == id);
+            return _context.Technicians.Any(e => e.TechnicianId == id);
         }
     }
 }

@@ -4,6 +4,16 @@
     <UserSecretsId>a2668a28-3fb5-4b12-b17f-15799b0a198e</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Views\Home\image\**" />
+    <Compile Remove="Views\NewFolder\**" />
+    <Content Remove="Views\Home\image\**" />
+    <Content Remove="Views\NewFolder\**" />
+    <EmbeddedResource Remove="Views\Home\image\**" />
+    <EmbeddedResource Remove="Views\NewFolder\**" />
+    <None Remove="Views\Home\image\**" />
+    <None Remove="Views\NewFolder\**" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Remove="wwwroot\css\customs.scss" />
   </ItemGroup>
   <ItemGroup>
@@ -26,9 +36,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Migrations\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Home\image\" />
   </ItemGroup>
   <Target Name="SCSSToCSS" BeforeTargets="Build">
     <Exec Command="mkdir $(ProjectDir)wwwroot/css" Condition="!Exists('$(ProjectDir)wwwroot/css')" />
