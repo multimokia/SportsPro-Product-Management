@@ -11,7 +11,8 @@
   </div>
 </div>
 
-<p>
+<div class="container">
+    <p>
     <a class="btn btn-primary btn-md" asp-action="Create">Create New</a>
 </p>
 <table class="table">
@@ -48,12 +49,13 @@
                 @Html.DisplayFor(modelItem => item.ReleaseDate)
             </td>
             <td>
-                <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.ProductCode">Edit</a> |
-                <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-id="@item.ProductCode">Details</a> |
+                <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.ProductCode">Edit</a> 
+                <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-id="@item.ProductCode">Details</a> 
                 <a class="btn btn-primary btn-sm" asp-action="Delete" asp-route-id="@item.ProductCode">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+</div>
 

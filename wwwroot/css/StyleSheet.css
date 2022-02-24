@@ -3509,6 +3509,7 @@ fieldset:disabled .btn {
         color: #fff;
         background-color: #ca514d;
         border-color: #be4c49;
+        transition: all 0.5s !important;
     }
 
     .btn-check:focus + .btn-danger, .btn-danger:focus {

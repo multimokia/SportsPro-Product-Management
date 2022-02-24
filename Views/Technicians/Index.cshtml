@@ -12,7 +12,9 @@
   </div>
 </div>
 
-<p>
+
+<div class="container">
+    <p>
     <a class="btn btn-primary btn-md" asp-action="Create">Create New</a>
 </p>
 <table class="table">
@@ -43,12 +45,14 @@
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
             <td>
-                <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.TechnicianId">Edit</a> |
-                <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-id="@item.TechnicianId">Details</a> |
+                <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.TechnicianId">Edit</a> 
+                <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-id="@item.TechnicianId">Details</a> 
                 <a class="btn btn-primary btn-sm" asp-action="Delete" asp-route-id="@item.TechnicianId">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+</div>
 

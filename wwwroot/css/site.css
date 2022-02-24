@@ -20,10 +20,44 @@ a {
 
 .btn-primary {
     color: #fff;
-    background-color: #1b6ec2;
+    background: linear-gradient(#52565a, #3a3f44 60%, #353a3f);
     border-color: #1F51FF;
+
 }
 
+    .btn-primary:hover {
+        color: #fff;
+        background: #835d99 !important;
+        border-color: #fff;
+        -webkit-transition: all 0.5s ease-out;
+        -moz-transition: all 0.5s ease-out;
+        -o-transition: all 0.5s ease-out;
+        transition: all 0.5s ease-out;
+    }
+
+
+.btn-form {
+    color: #fff;
+    background-image: linear-gradient(#52565a, #3a3f44 80%, #353a3f);
+    border-color: #313233;
+}
+
+    .btn-form:hover {
+        color: #fff;
+        background: #353a3f !important;
+        border-color: #fff;
+        -webkit-transition: all 0.5s !important;
+        -moz-transition: all 0.5s !important;
+        -o-transition: all 0.5s !important;
+        transition: all 1s !important;
+    }
+
+.btn-danger:hover {
+    color: #fff;
+    background: #ca514d !important;
+    border-color: #be4c49;
+    transition: all 0.5s !important;
+}
 /* Green Navigation Design
 -------------------------------------------------- */
 nav {
@@ -206,10 +240,23 @@ table {
    
 }
 
+.wrapper {
+    width: 338px;
+    margin: 0 auto;
+}
 
+.profile_photo {
+    width: 338px;
+    height: 338px;
+    background: #ccc;
+    margin: 80px 0px;
+    border-radius: 999px;
+    background-image: url(https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80);
+    background-position: center;
+    background-size: cover
+}
 
 .bg-colored {
-
     width: 50%;
     height: 30rem;
     display: flex;

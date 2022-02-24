@@ -4,50 +4,98 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+  <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="title-custom display-4">Create new incident</h1>
+    <p class="lead" style="text-align:center;">Please enter the incident information and hit the create button. If you do not want, hit the go back button</p>
+</div>
+</div>
 
-<h4>Incident</h4>
+<div class="container form_box card"  style="border:none;box-shadow:none; ">
+
+        <h4 class="text-center mb-4">Incident </h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" runat="server">
+<br />
+        <form class="form-card" asp-action="Create" runat="server">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Customer" class="control-label"></label>
-                <select asp-for="Customer" asp-itemscope="Model.Customers">
+
+            <div class="row justify-content-between text-left form_wrapper">
+                 <div class="form-group col-6 flex-column d-flex">
+                   <label asp-for="CustomerId" class="control-label"></label>
+                <select asp-for="CustomerId">
+                    <option value="">Select a customer</option>
+                @foreach (Customer customer in ViewBag.Customers)
+                {
+                    <option value="@customer.CustomerId">@customer.Name</option>
+                }
                 </select>
-                <span asp-validation-for="Customer" class="text-danger"></span>
+                <span asp-validation-for="CustomerId" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
+
+            <div class="row justify-content-between text-left form_wrapper">
+                 <div class="form-group col-sm-6 flex-column d-flex">
+                    <label asp-for="ProductCode" class="control-label"></label>
+                <select asp-for="ProductCode">
+                    <option value="">Select a product</option>
+                @foreach (Product product in ViewBag.Products)
+                {
+                    <option value="@product.ProductCode">@product.Name</option>
+                }
+                </select>
+                <span asp-validation-for="ProductCode" class="text-danger"></span>
+                </div>
+                <div class="form-group col-sm-6 flex-column d-flex">
+                    <label asp-for="Title" class="control-label"></label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
+
+            <div class="form-group col-sm-6 flex-column d-flex form_wrapper">
+                <div class="form-group col-sm-6 flex-column d-flex">
+               <label asp-for="Description" class="control-label"></label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-sm-6 flex-column d-flex">
+                <label asp-for="TechnicianId" class="control-label"></label>
+                <select asp-for="TechnicianId">
+                    <option value="">Assign a technician?</option>
+                @foreach (Technician technician in ViewBag.Technicians)
+                {
+                    <option value="@technician.TechnicianId">@technician.Name</option>
+                }
+                </select>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="DateOpened" class="control-label"></label>
+
+
+              <div class="form-group col-sm-6 flex-column d-flex form_wrapper">
+                <div class="form-group col-sm-6 flex-column d-flex">
+                 <label asp-for="DateOpened" class="control-label">Date Opened</label>
                 <input asp-for="DateOpened" class="form-control" />
                 <span asp-validation-for="DateOpened" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DateClosed" class="control-label"></label>
+                </div>
+
+                <div class="form-group col-sm-6 flex-column d-flex">
+                  <label asp-for="DateClosed" class="control-label"></label>
                 <input asp-for="DateClosed" class="form-control" />
                 <span asp-validation-for="DateClosed" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
+
+            <div class="form-group button_center">
                 <input type="submit" value="Create" class="btn btn-primary" />
+                  <button type="button" class=" btn btn-form" style="margin:0.5rem;">
+                       <a asp-action="Index" >Back to List</a>
+                  </button>
             </div>
         </form>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
