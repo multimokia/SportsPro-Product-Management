@@ -21,25 +21,32 @@ namespace assignment1.Controllers
         }
 
         // GET: Incidents
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Incidents.ToListAsync());
+            List<Incident> incidents = await _context.Incidents
+                .Include(i => i.Customer)
+                .Include(i => i.Product)
+                .Include(i => i.Technician)
+                .ToListAsync();
+
+            return View(incidents);
         }
 
-        // GET: Incidents/Details/5
+        [HttpGet]
         public async Task<IActionResult> Details(long? id)
         {
             if (id == null)
-            {
-                return NotFound();
-            }
+                { return NotFound(); }
 
-            var incident = await _context.Incidents.FirstOrDefaultAsync(m => m.IncidentId == id);
+            var incident = await _context.Incidents
+                .Include(i => i.Customer)
+                .Include(i => i.Product)
+                .Include(i => i.Technician)
+                .FirstOrDefaultAsync(m => m.IncidentId == id);
 
             if (incident == null)
-            {
-                return NotFound();
-            }
+                { return NotFound(); }
 
             ViewBag.Customers = _context.Customers.OrderBy((x) => x.Name).ToList();
             ViewBag.Products = _context.Products.OrderBy((x) => x.Name).ToList();
@@ -81,18 +88,16 @@ namespace assignment1.Controllers
         }
 
         // GET: Incidents/Edit/5
+        [HttpGet]
         public async Task<IActionResult> Edit(long? id)
         {
             if (id == null)
-            {
-                return NotFound();
-            }
+                { return NotFound(); }
 
             var incident = await _context.Incidents.FindAsync(id);
+
             if (incident == null)
-            {
-                return NotFound();
-            }
+                { return NotFound(); }
 
             ViewBag.Customers = _context.Customers.OrderBy((x) => x.Name).ToList();
             ViewBag.Products = _context.Products.OrderBy((x) => x.Name).ToList();
@@ -109,9 +114,7 @@ namespace assignment1.Controllers
         public async Task<IActionResult> Edit(long id, Incident incident)
         {
             if (id != incident.IncidentId)
-            {
-                return NotFound();
-            }
+                { return NotFound(); }
 
             ViewBag.Customers = _context.Customers.OrderBy((x) => x.Name).ToList();
             ViewBag.Products = _context.Products.OrderBy((x) => x.Name).ToList();
@@ -127,13 +130,9 @@ namespace assignment1.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!IncidentExists(incident.IncidentId))
-                    {
-                        return NotFound();
-                    }
+                        { return NotFound(); }
                     else
-                    {
-                        throw;
-                    }
+                        { throw; }
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -144,15 +143,12 @@ namespace assignment1.Controllers
         public async Task<IActionResult> Delete(long? id)
         {
             if (id == null)
-            {
-                return NotFound();
-            }
+                { return NotFound(); }
 
             var incident = await _context.Incidents.FirstOrDefaultAsync(m => m.IncidentId == id);
+
             if (incident == null)
-            {
-                return NotFound();
-            }
+                { return NotFound(); }
 
             return View(incident);
         }

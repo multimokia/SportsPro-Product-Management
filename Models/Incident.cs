@@ -6,7 +6,6 @@ namespace assignment1.Models
     public class Incident
     {
         [Key]
-
         public long IncidentId { get; set; }
 
         [Required(ErrorMessage = "Customer is required")]
