@@ -19,7 +19,7 @@
     <thead>
         <tr>
             <th>@Html.DisplayNameFor(model => model.Title)</th>
-            <th>@Html.DisplayNameFor(model => model.CustomerId)</th>
+            <th>@Html.DisplayNameFor(model => model.Customer.Name)</th>
             <th>@Html.DisplayNameFor(model => model.Product)</th>
             <th>Date Opened</th>
             <th>Action</th>
@@ -29,14 +29,14 @@
     @foreach (var item in Model) {
         <tr>
             <td>@item.Title</td>
-            <td>@item.CustomerId</td>
+            <td>@item.Customer.Name</td>
             <td>@item.ProductId</td>
             <td>@item.DateOpened</td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IncidentId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.IncidentId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.IncidentId">Delete</a>
-            </td>                                                                                                           
+            </td>
         </tr>
     }
     </tbody>
