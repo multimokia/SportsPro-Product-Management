@@ -34,9 +34,6 @@
     <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
   <Target Name="SCSSToCSS" BeforeTargets="Build">
     <Exec Command="mkdir $(ProjectDir)wwwroot/css" Condition="!Exists('$(ProjectDir)wwwroot/css')" />
     <Exec Command="sass --no-source-map ./Styles/site.scss ./wwwroot/css/site.css" />

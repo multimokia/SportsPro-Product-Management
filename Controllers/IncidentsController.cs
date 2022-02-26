@@ -97,6 +97,7 @@ namespace assignment1.Controllers
             ViewBag.Customers = _context.Customers.OrderBy((x) => x.Name).ToList();
             ViewBag.Products = _context.Products.OrderBy((x) => x.Name).ToList();
             ViewBag.Technicians = _context.Technicians.OrderBy((x) => x.Name).ToList();
+
             return View(incident);
         }
 
@@ -105,7 +106,7 @@ namespace assignment1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("IncidentId,Title,Description,DateOpened,DateClosed")] Incident incident)
+        public async Task<IActionResult> Edit(long id, Incident incident)
         {
             if (id != incident.IncidentId)
             {

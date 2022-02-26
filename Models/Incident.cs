@@ -14,7 +14,7 @@ namespace assignment1.Models
         public Customer Customer { get; set;}
 
         [Required(ErrorMessage = "Product is required")]
-        public string ProductCode { get; set; }
+        public string ProductId { get; set; }
         public Product Product { get; set; }
 
         [Required(ErrorMessage = "Title is required")]
