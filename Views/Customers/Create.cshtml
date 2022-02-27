@@ -31,7 +31,7 @@
             <input asp-for="StreetAddress" class="form-control" placeholder="Street Address"/>
             <span asp-validation-for="StreetAddress" class="text-danger"></span>
         </div>
-        <div class="form-group col-sm-6 flex-column d-flex form_wrapper">
+        <div class="form-group col-sm-6 flex-column d-flex">
             <label asp-for="PostalCode" class="control-label"></label>
             <input asp-for="PostalCode" class="form-control" placeholder="Postal Code" />
             <span asp-validation-for="PostalCode" class="text-danger"></span>
@@ -44,9 +44,9 @@
             <input asp-for="City" class="form-control" placeholder="City"  />
             <span asp-validation-for="City" class="text-danger"></span>
         </div>
-        <div class="form-group col-sm-6 flex-column d-flex form_wrapper">
+        <div class="form-group col-sm-6 flex-column d-flex">
             <label asp-for="Country" class="control-label"></label>
-            <select asp-for="Country">
+            <select class="form-select" asp-for="Country">
                 <option value="">Select your country</option>
             @foreach (string country in ViewBag.Countries)
             {
@@ -71,13 +71,10 @@
     </div>
 
         <div class="form-group button_center">
-
                   <input type="submit" class=" btn btn-form" value="Create" style="margin:0.5rem;" />
                   <button type="button" class=" btn btn-form" style="margin:0.5rem;">
                        <a asp-action="Index" >Back to List</a>
                   </button>
-
- 
             </div>
   </form>
 </div>

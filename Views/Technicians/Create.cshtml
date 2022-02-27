@@ -4,37 +4,52 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+  <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="title-custom display-4">Create new Technician</h1>
+    <p class="lead" style="text-align:center;">Please enter the Technician information and hit the create button. If you do not want, hit the go back button</p>
+</div>
+</div>
 
-<h4>Technician</h4>
+
+<div class="container form_box card"  style="border:none;box-shadow:none; ">
+<h4  class="text-center mb-4">Technician</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
+<br/>
+
+        <form class="form-card"  asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+
+    <div class="row justify-content-between text-left form_wrapper">
+            <div class="form-group col-6 flex-column d-flex">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
+    </div>
+
+    <div class="row justify-content-between text-left form_wrapper">
+            <div class="form-group col-6 flex-column d-flex">
                 <label asp-for="StreetAddress" class="control-label"></label>
                 <input asp-for="StreetAddress" class="form-control" />
                 <span asp-validation-for="StreetAddress" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="City" class="control-label"></label>
-                <input asp-for="City" class="form-control" />
-                <span asp-validation-for="City" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            <div class="form-group col-6 flex-column d-flex">
                 <label asp-for="PostalCode" class="control-label"></label>
                 <input asp-for="PostalCode" class="form-control" />
                 <span asp-validation-for="PostalCode" class="text-danger"></span>
             </div>
-            <div class="form-group">
+    </div>
+
+    <div class="row justify-content-between text-left form_wrapper">
+            <div class="form-group col-6 flex-column d-flex">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group col-6 flex-column d-flex">
                 <label asp-for="Country" class="control-label"></label>
-                <select asp-for="Country">
+                <select class="form-select" asp-for="Country">
                     <option value="">Select your country</option>
                 @foreach (string country in ViewBag.Countries)
                 {
@@ -42,26 +57,28 @@
                 }
                 </select>
             </div>
-            <div class="form-group">
+    </div>
+    <div class="row justify-content-between text-left form_wrapper">
+            <div class="form-group col-6 flex-column d-flex">
                 <label asp-for="EmailAddress" class="control-label"></label>
                 <input asp-for="EmailAddress" class="form-control" />
                 <span asp-validation-for="EmailAddress" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group col-6 flex-column d-flex">
                 <label asp-for="PhoneNumber" class="control-label"></label>
                 <input asp-for="PhoneNumber" class="form-control" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+
+            <div class="form-group button_center">
+                  <input type="submit" class=" btn btn-form" value="Create" style="margin:0.5rem;" />
+                  <button type="button" class=" btn btn-form" style="margin:0.5rem;">
+                       <a asp-action="Index" >Back to List</a>
+                  </button>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

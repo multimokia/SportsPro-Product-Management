@@ -39,9 +39,9 @@
                 <td>@(item.TechnicianId is not null ? item.Technician.Name : "N/A")</td>
                 <td>@item.DateOpened</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.IncidentId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.IncidentId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.IncidentId">Delete</a>
+                    <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.IncidentId">Edit</a> 
+                    <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-id="@item.IncidentId">Details</a> 
+                    <a class="btn btn-primary btn-sm" asp-action="Delete" asp-route-id="@item.IncidentId">Delete</a>
                 </td>
             </tr>
         }
