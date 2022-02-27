@@ -33,7 +33,7 @@ namespace assignment1.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Products.FirstOrDefaultAsync(m => m.ProductCode == id);
+            var product = await _context.Products.FirstOrDefaultAsync(m => m.ProductId == id);
             if (product == null)
             {
                 return NotFound();
@@ -53,7 +53,7 @@ namespace assignment1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductCode,Name,YearlyPrice,ReleaseDate")] Product product)
+        public async Task<IActionResult> Create(Product product)
         {
             if (ModelState.IsValid)
             {
@@ -85,9 +85,9 @@ namespace assignment1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("ProductCode,Name,YearlyPrice,ReleaseDate")] Product product)
+        public async Task<IActionResult> Edit(string id, Product product)
         {
-            if (id != product.ProductCode)
+            if (id != product.ProductId)
             {
                 return NotFound();
             }
@@ -101,7 +101,7 @@ namespace assignment1.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductExists(product.ProductCode))
+                    if (!ProductExists(product.ProductId))
                     {
                         return NotFound();
                     }
@@ -124,7 +124,7 @@ namespace assignment1.Controllers
             }
 
             var product = await _context.Products
-                .FirstOrDefaultAsync(m => m.ProductCode == id);
+                .FirstOrDefaultAsync(m => m.ProductId == id);
             if (product == null)
             {
                 return NotFound();
@@ -146,7 +146,7 @@ namespace assignment1.Controllers
 
         private bool ProductExists(string id)
         {
-            return _context.Products.Any(e => e.ProductCode == id);
+            return _context.Products.Any(e => e.ProductId == id);
         }
     }
 }
