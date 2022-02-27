@@ -33,32 +33,10 @@
                 </select>
                 <span asp-validation-for="CustomerId" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ProductId" class="control-label">Product</label>
-                <select asp-for="ProductId">
-            </div>
-            <div class="form-group">
-                <label asp-for="ProductId" class="control-label">Product</label>
-                <select asp-for="ProductId">
-            </div>
-            <div class="form-group">
-                <label asp-for="ProductId" class="control-label">Product</label>
-                <select asp-for="ProductId">
-            </div>
-            <div class="form-group">
-                <label asp-for="ProductId" class="control-label">Product</label>
-                <select asp-for="ProductId">
-            </div>
-            <div class="form-group">
-                <label asp-for="ProductId" class="control-label">Product</label>
-                <select asp-for="ProductId">
-                </div>
-            </div>
-
             <div class="row justify-content-between text-left form_wrapper">
                  <div class="form-group col-sm-6 flex-column d-flex">
-                    <label asp-for="ProductCode" class="control-label"></label>
-                <select asp-for="ProductCode">
+                    <label asp-for="ProductId" class="control-label"></label>
+                <select asp-for="ProductId">
                     <option value="">Select a product</option>
                 @foreach (Product product in ViewBag.Products)
                 {
@@ -85,7 +63,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
-                <span asp-validation-for="ProductCode" class="text-danger"></span>
+                <span asp-validation-for="ProductId" class="text-danger"></span>
                 </div>
                 <div class="form-group col-sm-6 flex-column d-flex">
                     <label asp-for="Title" class="control-label"></label>
