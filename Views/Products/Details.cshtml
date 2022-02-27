@@ -4,39 +4,56 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+ <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="title-custom display-4">Product Details</h1>
+    <p class="lead" style="text-align:center;">Product information page.  If do you want to edit, just hit edit button.</p>
+</div>
+</div>
 
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="row">
-       <dt class = "col-sm-2">
+<div class="container">
+
+        <div class = "wrapper d-flex justify-content-center">
+           <div class="product_photo"></div>
+         </div>
+
+            <h4 style="text-align:center;">Customer</h4>
+            <hr />
+
+    <dl class="row wrapper">
+       <dt class = "col-sm-6 d-flex justify-content-right">
             @Html.DisplayNameFor(model => model.ProductId)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-6 d-flex justify-content-left">
             @Html.DisplayFor(model => model.ProductId)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-6 d-flex justify-content-right">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-6 d-flex justify-content-left">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-6 d-flex justify-content-right">
             Yearly Price
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-6 d-flex justify-content-left">
             @Html.DisplayFor(model => model.YearlyPrice)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-6 d-flex justify-content-right">
             Releas eDate
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-6 d-flex justify-content-left">
             @Html.DisplayFor(model => model.ReleaseDate)
         </dd>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.ProductId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+                <div class="form-group button_center">
+                  <button type="button" class=" btn btn-form" style="margin:0.5rem;">
+                        <a asp-action="Edit" asp-route-id="@Model.ProductId">Edit</a> 
+                  </button>                  
+                  
+                  <button type="button" class=" btn btn-form" style="margin:0.5rem;">
+                       <a asp-action="Index" >Back to List</a>
+                  </button>
+            </div>
+
 </div>

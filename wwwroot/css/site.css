@@ -245,7 +245,7 @@ table {
     width: 338px;
     height: 338px;
     background: #ccc;
-    margin: 80px 0px;
+    margin-bottom: 50px ;
     border-radius: 999px;
     background-image: url(https://images.unsplash.com/photo-1587093336587-eeca6cb17cf2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80);
     background-position: center;

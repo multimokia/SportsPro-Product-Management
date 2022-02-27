@@ -4,35 +4,50 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Incident</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.Title)</dt>
-        <dd class = "col-sm-10">@Html.DisplayFor(model => model.Title)</dd>
-
-        <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.Description)</dt>
-        <dd class = "col-sm-10">@Html.DisplayFor(model => model.Description)</dd>
-
-        <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.Customer)</dt>
-        <dd class = "col-sm-10">@Html.DisplayFor(model => model.Customer.Name)</dd>
-
-        <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.Product)</dt>
-        <dd class = "col-sm-10">@Html.DisplayFor(model => model.Product.Name)</dd>
-
-        <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.Technician)</dt>
-        <dd class = "col-sm-10">@(Model.Technician is not null ? Model.Technician.Name : "N/A")</dd>
-
-        <dt class = "col-sm-2">Date Opened</dt>
-        <dd class = "col-sm-10">@Html.DisplayFor(model => model.DateOpened)</dd>
-
-        <dt class = "col-sm-2">Date Closed</dt>
-        <dd class = "col-sm-10">@Html.DisplayFor(model => model.DateClosed)</dd>
-    </dl>
+ <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="title-custom display-4">Incident Information Details</h1>
+    <p class="lead" style="text-align:center;">Incident  information page.  If do you want to edit, just hit the edit button.</p>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.IncidentId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+</div>
+<div class="container">
+          <div class = "wrapper d-flex justify-content-center">
+           <div class="incident_photo"></div>
+         </div>
+
+            <h4 style="text-align:center;">Incident</h4>
+            <hr />
+            
+    <dl class="row wrapper">
+        <dt class = "col-sm-12 d-flex justify-content-center">@Html.DisplayNameFor(model => model.Title)</dt>
+        <dd class = "col-sm-12 d-flex justify-content-center">@Html.DisplayFor(model => model.Title)</dd>
+
+        <dt class = "col-sm-12 d-flex justify-content-center">@Html.DisplayNameFor(model => model.Description)</dt>
+        <dd class = "col-sm-12 d-flex justify-content-center">@Html.DisplayFor(model => model.Description)</dd>
+        <div style="margin-bottom: 2rem"></div>
+        <dt class = "col-sm-6 d-flex justify-content-left">@Html.DisplayNameFor(model => model.Customer)</dt>
+        <dd class = "col-sm-6 d-flex justify-content-right">@Html.DisplayFor(model => model.Customer.Name)</dd>
+
+        <dt class = "col-sm-6 d-flex justify-content-left">@Html.DisplayNameFor(model => model.Product)</dt>
+        <dd class = "col-sm-6 d-flex justify-content-right">@Html.DisplayFor(model => model.Product.Name)</dd>
+
+        <dt class = "col-sm-6 d-flex justify-content-left">@Html.DisplayNameFor(model => model.Technician)</dt>
+        <dd class = "col-sm-6 d-flex justify-content-right">@(Model.Technician is not null ? Model.Technician.Name : "N/A")</dd>
+
+        <dt class = "col-sm-6 d-flex justify-content-left">Date Opened</dt>
+        <dd class = "col-sm-6 d-flex justify-content-right">@Html.DisplayFor(model => model.DateOpened)</dd>
+
+        <dt class = "col-sm-6 d-flex justify-content-left">Date Closed</dt>
+        <dd class = "col-sm-6 d-flex justify-content-right">@Html.DisplayFor(model => model.DateClosed)</dd>
+    </dl>
+                <div class="form-group button_center">
+                  <button type="button" class=" btn btn-form" style="margin:0.5rem;">
+                        <a asp-action="Edit" asp-route-id="@Model.IncidentId">Edit</a> 
+                  </button>                  
+                  
+                  <button type="button" class=" btn btn-form" style="margin:0.5rem;">
+                       <a asp-action="Index" >Back to List</a>
+                  </button>
+            </div>
+
 </div>
