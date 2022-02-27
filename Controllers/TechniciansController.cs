@@ -71,15 +71,11 @@ namespace assignment1.Controllers
         public async Task<IActionResult> Edit(long? id)
         {
             if (id == null)
-            {
-                return NotFound();
-            }
+                { return NotFound(); }
 
             var technician = await _context.Technicians.FindAsync(id);
             if (technician == null)
-            {
-                return NotFound();
-            }
+                { return NotFound(); }
 
             ViewBag.Countries = CustomersController.Countries;
             return View(technician);
@@ -93,9 +89,7 @@ namespace assignment1.Controllers
         public async Task<IActionResult> Edit(long id, Technician technician)
         {
             if (id != technician.TechnicianId)
-            {
-                return NotFound();
-            }
+                { return NotFound(); }
 
             if (ModelState.IsValid)
             {
@@ -107,13 +101,9 @@ namespace assignment1.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!TechnicianExists(technician.TechnicianId))
-                    {
-                        return NotFound();
-                    }
+                        { return NotFound(); }
                     else
-                    {
-                        throw;
-                    }
+                        { throw; }
                 }
                 return RedirectToAction(nameof(Index));
             }

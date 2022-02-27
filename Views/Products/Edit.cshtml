@@ -21,7 +21,7 @@
             <input type="hidden" asp-for="ProductId" />
         <div class="row justify-content-between text-left form_wrapper" style = "width:550px; margin:0 auto;">
             <div class="form-group col-12 flex-column d-flex">
-                <label asp-for="ProductId" class="control-label"></label>
+                <label asp-for="ProductId" class="control-label">Product ID</label>
                 <input asp-for="ProductId" class="form-control" />
                 <span asp-validation-for="ProductId" class="text-danger"></span>
             </div>
@@ -42,7 +42,7 @@
             </div>
         </div>
                 <div class="form-group button_center">
-                  <input type="submit" class=" btn btn-form" value="save" style="margin:0.5rem;" />
+                  <input type="submit" class=" btn btn-form" value="Save" style="margin:0.5rem;" />
                   <button type="button" class=" btn btn-form" style="margin:0.5rem;">
                        <a asp-action="Index" >Back to List</a>
                   </button>

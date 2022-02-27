@@ -19,7 +19,7 @@
   <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="row justify-content-between text-left form_wrapper">
         <div class="form-group col-6 flex-column d-flex">
-            <label asp-for="Name"  class="control-label"></label>
+            <label asp-for="Name"  class="control-label">Customer</label>
            <input asp-for="Name" class="form-control" placeholder="Enter your Name"/>
            <span asp-validation-for="Name" class="text-danger"></span>
         </div>
@@ -27,13 +27,13 @@
 
     <div class="row justify-content-between text-left form_wrapper">
         <div class="form-group col-sm-6 flex-column d-flex">
-            <label asp-for="StreetAddress" class="control-label"></label>
-            <input asp-for="StreetAddress" class="form-control" placeholder="Street Address"/>
+            <label asp-for="StreetAddress" class="control-label">Street Address</label>
+            <input asp-for="StreetAddress" class="form-control" placeholder="Enter your street address"/>
             <span asp-validation-for="StreetAddress" class="text-danger"></span>
         </div>
         <div class="form-group col-sm-6 flex-column d-flex">
-            <label asp-for="PostalCode" class="control-label"></label>
-            <input asp-for="PostalCode" class="form-control" placeholder="Postal Code" />
+            <label asp-for="PostalCode" class="control-label">Postal Code</label>
+            <input asp-for="PostalCode" class="form-control" placeholder="Enter your postal code" />
             <span asp-validation-for="PostalCode" class="text-danger"></span>
         </div>
     </div>
@@ -59,13 +59,13 @@
 
     <div class="row justify-content-between text-left">
         <div class="form-group col-sm-6 flex-column d-flex">
-            <label asp-for="EmailAddress" class="control-label"></label>
-            <input asp-for="EmailAddress" class="form-control"  placeholder="Email Address"/>
+            <label asp-for="EmailAddress" class="control-label">Email Address</label>
+            <input asp-for="EmailAddress" class="form-control"  placeholder="Enter your email address"/>
             <span asp-validation-for="EmailAddress" class="text-danger"></span>
         </div>
         <div class="form-group col-sm-6 flex-column d-flex">
-            <label asp-for="PhoneNumber" class="control-label"></label>
-            <input asp-for="PhoneNumber" class="form-control" placeholder="Phone Number"/>
+            <label asp-for="PhoneNumber" class="control-label">Phone Number</label>
+            <input asp-for="PhoneNumber" class="form-control" placeholder="Enter your phone number"/>
             <span asp-validation-for="PhoneNumber" class="text-danger"></span>
         </div>
     </div>

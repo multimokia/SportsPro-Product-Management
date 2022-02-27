@@ -68,15 +68,12 @@ namespace assignment1.Controllers
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
-            {
-                return NotFound();
-            }
+                { return NotFound(); }
 
             var product = await _context.Products.FindAsync(id);
             if (product == null)
-            {
-                return NotFound();
-            }
+                { return NotFound(); }
+
             return View(product);
         }
 
@@ -87,7 +84,7 @@ namespace assignment1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, Product product)
         {
-            if (id != product.ProductId)
+            if (id != product.ProductId.ToLower())
             {
                 return NotFound();
             }
@@ -102,16 +99,13 @@ namespace assignment1.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!ProductExists(product.ProductId))
-                    {
-                        return NotFound();
-                    }
+                        { return NotFound(); }
                     else
-                    {
-                        throw;
-                    }
+                        { throw; }
                 }
                 return RedirectToAction(nameof(Index));
             }
+
             return View(product);
         }
 

@@ -11,8 +11,8 @@ namespace assignment1.Models
     public abstract class Person
     {
         /// <summary>
-        /// Last name of the person
-        /// </summary>
+        /// Full name of the person
+        /// /// </summary>
         [Required(ErrorMessage="Name is required")]
         [Display]
         public string Name { get; set; }
