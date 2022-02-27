@@ -4,40 +4,52 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+ <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="title-custom display-4">Edit Product</h1>
+    <p class="lead" style="text-align:center;">Please Edit the Product information and hit the save button</p>
+</div>
+</div>
 
-<h4>Product</h4>
+
+<div class="container form_box card"  style="border:none;box-shadow:none; ">
+    <h4  class="text-center mb-4">Product</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
+<br/>
+        <form class="form-card" asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ProductId" />
-            <div class="form-group">
+        <div class="row justify-content-between text-left form_wrapper" style = "width:550px; margin:0 auto;">
+            <div class="form-group col-12 flex-column d-flex">
+                <label asp-for="ProductId" class="control-label"></label>
+                <input asp-for="ProductId" class="form-control" />
+                <span asp-validation-for="ProductId" class="text-danger"></span>
+            </div>
+            <div class="form-group col-12 flex-column d-flex">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group col-12 flex-column d-flex">
                 <label asp-for="YearlyPrice" class="control-label">Yearly price</label>
                 <input asp-for="YearlyPrice" class="form-control" />
                 <span asp-validation-for="YearlyPrice" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group col-12 flex-column d-flex">
                 <label asp-for="ReleaseDate" class="control-label">Release date</label>
                 <input asp-for="ReleaseDate" class="form-control" />
                 <span asp-validation-for="ReleaseDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+                <div class="form-group button_center">
+                  <input type="submit" class=" btn btn-form" value="save" style="margin:0.5rem;" />
+                  <button type="button" class=" btn btn-form" style="margin:0.5rem;">
+                       <a asp-action="Index" >Back to List</a>
+                  </button>
             </div>
         </form>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
