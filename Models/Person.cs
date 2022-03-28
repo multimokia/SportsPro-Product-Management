@@ -44,11 +44,14 @@ namespace assignment1.Models
         /// <summary>
         /// Person's email address (optional)
         /// </summary>
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "Email is not valid")]
         public string? EmailAddress { get; set; }
 
         /// <summary>
         /// Person's phone number (optional)
         /// </summary>
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(\d{3}\)-\d{3}-\d{4}$", ErrorMessage = "Phone number must be in format (xxx)-xxx-xxx")]
         public string? PhoneNumber { get; set; }
     }
 }

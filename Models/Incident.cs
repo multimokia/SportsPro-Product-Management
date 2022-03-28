@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace assignment1.Models
 {
@@ -22,14 +23,23 @@ namespace assignment1.Models
         [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
 
-#nullable enable
+        #nullable enable
         public long? TechnicianId { get; set; }
         public Technician? Technician { get; set; }
-#nullable restore
+        #nullable restore
 
+        [Display(Name="Date Opened")]
         public DateTime? DateOpened { get; set; }
 
+        [Display(Name="Date Closed")]
         [Required(ErrorMessage = "Date Closed is required")]
         public DateTime DateClosed { get; set; }
+
+        //Filterable statuses
+        [NotMapped]
+        public bool isOpen => DateClosed == null;
+
+        [NotMapped]
+        public bool isUnassigned => TechnicianId == null;
     }
 }

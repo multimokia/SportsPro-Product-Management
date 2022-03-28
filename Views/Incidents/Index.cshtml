@@ -1,50 +1,59 @@
-﻿@model IEnumerable<assignment1.Models.Incident>
-
+﻿@page
+@model IEnumerable<assignment1.Models.Incident>
 @{
     ViewData["Title"] = "Incidents";
 }
-
 <div class="jumbotron jumbotron-fluid" data-aos="fade-in  " data-aos-delay="200" data-aos-duration="1500">
     <div class="container" data-aos="fade-in  " data-aos-delay="200" data-aos-duration="1500">
         <img src="https://img.icons8.com/external-fauzidea-gradient-fauzidea/64/000000/external-sport-back-to-school-fauzidea-gradient-fauzidea.png"
             style="width:50px; margin: 10px auto; display:block;" />
         <h1 class="title-custom display-4">INCIDENTS</h1>
-        <p class="lead" style="text-align:center;">The application should display the Incident Manager page when the user completes or cancels an operation for 
-adding, editing, or deleting an incident.</p>
+        <p class="lead" style="text-align:center;">The application should display the Incident Manager page when the
+            user completes or cancels an operation for
+            adding, editing, or deleting an incident.</p>
     </div>
 </div>
 
 <div class="container">
     <p>
-    <a class="btn btn-primary btn-md" asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.Title)</th>
-            <th>@Html.DisplayNameFor(model => model.Customer)</th>
-            <th>@Html.DisplayNameFor(model => model.Product)</th>
-            <th>@Html.DisplayNameFor(model => model.Technician)</th>
-            <th>Date Opened</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+        <a class="btn btn-primary btn-md" asp-action="Create">Create New</a>
+    </p>
+    <span style="padding: 5%;">
+        <!-- Filters for the table, we'll want to sort by all, unassigned, and open incidents. We will default to all -->
+
+        <input type="radio" name="filter" class="btn btn-primary btn-md">All</a>
+        <input type="radio" name="filter" class="btn btn-primary btn-md">Unassigned</a>
+        <input type="radio" name="filter" class="btn btn-primary btn-md">Open</a>
+    </span>
+
+    <table class="table">
+        <thead>
             <tr>
-                <td>@item.Title</td>
-                <td>@item.Customer.Name</td>
-                <td>@item.Product.Name</td>
-                <td>@(item.TechnicianId is not null ? item.Technician.Name : "N/A")</td>
-                <td>@item.DateOpened</td>
-                <td>
-                    <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.IncidentId">Edit</a> 
-                    <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-id="@item.IncidentId">Details</a> 
-                    <a class="btn btn-primary btn-sm" asp-action="Delete" asp-route-id="@item.IncidentId">Delete</a>
-                </td>
+                <th>@Html.DisplayNameFor(model => model.Title)</th>
+                <th>@Html.DisplayNameFor(model => model.Customer)</th>
+                <th>@Html.DisplayNameFor(model => model.Product)</th>
+                <th>@Html.DisplayNameFor(model => model.Technician)</th>
+                <th>Date Opened</th>
+                <th>Action</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <!-- Loop thru incidents and display the ones that match the filter -->
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.Customer.Name</td>
+                    <td>@item.Product.Name</td>
+                    <td>@(item.TechnicianId is not null ? item.Technician.Name : "N/A")</td>
+                    <td>@item.DateOpened</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.IncidentId">Edit</a>
+                        <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-id="@item.IncidentId">Details</a>
+                        <a class="btn btn-primary btn-sm" asp-action="Delete" asp-route-id="@item.IncidentId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

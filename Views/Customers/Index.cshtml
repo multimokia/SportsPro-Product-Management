@@ -4,61 +4,61 @@
     ViewData["Title"] = "Customers Page";
 }
 
-
-
-
-  <div class="jumbotron jumbotron-fluid">
-  <div class="container" data-aos="fade-in  " data-aos-delay="200" data-aos-duration="1500">
-     <img src="https://img.icons8.com/external-icongeek26-outline-gradient-icongeek26/64/000000/external-customer-casino-icongeek26-outline-gradient-icongeek26.png"   style="width:50px; margin: 10px auto; display:block;"/>
-    <h1 class="title-custom display-4">CUSTOMERS</h1>
-    <p class="lead" style="text-align:center;">The application should display the Customer Manager page when the user completes or cancels an operation for 
-adding, editing, or deleting a customer.
-</p>
-  </div>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container" data-aos="fade-in  " data-aos-delay="200" data-aos-duration="1500">
+        <img src="https://img.icons8.com/external-icongeek26-outline-gradient-icongeek26/64/000000/external-customer-casino-icongeek26-outline-gradient-icongeek26.png"
+            style="width:50px; margin: 10px auto; display:block;" />
+        <h1 class="title-custom display-4">CUSTOMERS</h1>
+        <p class="lead" style="text-align:center;">The application should display the Customer Manager page when the
+            user completes or cancels an operation for
+            adding, editing, or deleting a customer.
+        </p>
+    </div>
 </div>
 
 <div class="container">
     <p>
-    <a  class="btn btn-primary btn-md" asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                Email Address
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.City)
-            </th>
-            <th>
-                Actions
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmailAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
+        <a class="btn btn-primary btn-md" asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    Email Address
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.City)
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
 
-                <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.CustomerId">Edit</a> 
-                <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-id="@item.CustomerId">Details</a> 
-                <a class="btn btn-primary btn-sm" asp-action="Delete" asp-route-id="@item.CustomerId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                        <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.CustomerId">Edit</a>
+                        <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-id="@item.CustomerId">Details</a>
+                        <a class="btn btn-primary btn-sm" asp-action="Delete" asp-route-id="@item.CustomerId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
 </div>

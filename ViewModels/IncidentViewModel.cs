@@ -1,23 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 using assignment1.Models;
 
 namespace assignment1.ViewModels
 {
-    public class IncidentViewModel
+    public class IncidentViewModel : PageModel
     {
-        public Person Customer { get; set; }
-
-        public List<Customer> Customers { get; } = new List<Customer>
+        public enum FilterOption
         {
-            new Customer { City = "Toronto", 
-                Country = "Canada", 
-                CustomerId = 1, 
-                EmailAddress = "aggra", 
-                Name = "Test Test", 
-                PhoneNumber = "25436253", 
-                PostalCode = "gsrge", 
-                StreetAddress = " 23424 2" }
-        };
+            All,
+            Open,
+            Closed,
+            Unassigned
+        }
+
+        public FilterOption Filter { get; set; }
     }
 }
