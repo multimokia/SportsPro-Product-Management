@@ -22,14 +22,23 @@ namespace assignment1.Controllers
 
         // GET: Incidents
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string filter)
         {
-            List<Incident> incidents = await _context.Incidents
+            var incidents = await _context.Incidents
                 .Include(i => i.Customer)
                 .Include(i => i.Product)
                 .Include(i => i.Technician)
                 .ToListAsync();
 
+
+            if (filter == "open")
+            {
+                incidents = (from i in incidents where i.isOpen select i).ToList();
+            }
+            else if (filter == "unassigned")
+            {
+                incidents = (from i in incidents where i.isUnassigned select i).ToList();
+            }
             return View(incidents);
         }
 

@@ -1,5 +1,4 @@
-﻿@page
-@model IEnumerable<assignment1.Models.Incident>
+﻿@model IEnumerable<assignment1.Models.Incident>
 @{
     ViewData["Title"] = "Incidents";
 }
@@ -21,9 +20,9 @@
     <span style="padding: 5%;">
         <!-- Filters for the table, we'll want to sort by all, unassigned, and open incidents. We will default to all -->
 
-        <input type="radio" name="filter" class="btn btn-primary btn-md">All</a>
-        <input type="radio" name="filter" class="btn btn-primary btn-md">Unassigned</a>
-        <input type="radio" name="filter" class="btn btn-primary btn-md">Open</a>
+        <a class="nav-link " asp-controller="Incidents" asp-action="Index" asp-route-filter="all">All</a>
+        <a class="nav-link " asp-controller="Incidents" asp-action="Index" asp-route-filter="unassigned">Unassigned</a>
+        <a class="nav-link " asp-controller="Incidents" asp-action="Index" asp-route-filter="open">Open</a>
     </span>
 
     <table class="table">
