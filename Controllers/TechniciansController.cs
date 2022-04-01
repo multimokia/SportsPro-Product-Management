@@ -145,5 +145,18 @@ namespace assignment1.Controllers
         {
             return _context.Technicians.Any(e => e.TechnicianId == id);
         }
+
+        /// <summary>
+        /// Validation for email address. Verifies the email provided is not already in the database for technicians
+        /// </summary>
+        /// <param name="email">email address to check</param>
+        /// <returns>Json object</returns>
+        [HttpGet]
+        public JsonResult VerifyEmail(string EmailAddress)
+        {
+            return Json(
+                !_context.Technicians.Any(t => t.EmailAddress == EmailAddress)
+            );
+        }
     }
 }

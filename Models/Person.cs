@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using Microsoft.AspNetCore.Mvc;
 namespace assignment1.Models
 {
     /// <summary>
@@ -42,11 +42,6 @@ namespace assignment1.Models
         public string Country { get; set; }
 
         #nullable enable
-        /// <summary>
-        /// Person's email address (optional)
-        /// </summary>
-        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "Email is not valid.")]
-        public string? EmailAddress { get; set; }
 
         /// <summary>
         /// Person's phone number (optional)

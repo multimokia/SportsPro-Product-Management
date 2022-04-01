@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using assignment1.Models;
 using assignment1.ViewModels;
@@ -355,6 +354,20 @@ namespace assignment1.Controllers
         private bool CustomerExists(long id)
         {
             return _context.Customers.Any(e => e.CustomerId == id);
+        }
+
+        /// <summary>
+        /// Validation for email address. Verifies the email provided is not already in the database for customers
+        /// </summary>
+        /// <param name="email">email address to check</param>
+        /// <returns>Json object</returns>
+
+        [HttpGet]
+        public JsonResult VerifyEmail(string EmailAddress)
+        {
+            return Json(
+                !_context.Customers.Any(c => c.EmailAddress == EmailAddress)
+            );
         }
     }
 }
