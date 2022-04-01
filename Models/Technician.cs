@@ -11,7 +11,7 @@ namespace assignment1.Models
         /// <summary>
         /// Person's email address (optional)
         /// </summary>
-        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "Email is not valid.")]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.\w+)+)", ErrorMessage = "Email is not valid.")]
         [Remote("VerifyEmail", "Technicians", ErrorMessage="Email is already in use.")]
         public string? EmailAddress { get; set; }
     }

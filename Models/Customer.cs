@@ -13,7 +13,7 @@ namespace assignment1.Models
         /// </summary>
 
         #nullable enable
-        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "Email is not valid.")]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.\w+)+)", ErrorMessage = "Email is not valid.")]
         [Remote("VerifyEmail", "customers", ErrorMessage="Email is already in use.")]
         public string? EmailAddress { get; set; }
 
