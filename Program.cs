@@ -1,15 +1,7 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;
 
-
-using dotenv.net;
 namespace assignment1
 {
     public class Program
@@ -18,19 +10,13 @@ namespace assignment1
 
         public static void Main(string[] args)
         {
-            envVars = DotEnv.Read();
-
-
             CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
+            Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(
+                webBuilder => {
                     webBuilder.UseStartup<Startup>();
                 });
     }
 }
-
-

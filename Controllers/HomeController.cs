@@ -18,11 +18,21 @@ namespace assignment1.Controllers
             _logger = logger;
         }
 
+        [Route("")]
+        [Route("home")]
+        [Route("home/index")]
         public IActionResult Index()
         {
             return View();
         }
 
+        [Route("about")]
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        [Route("privacy")]
         public IActionResult Privacy()
         {
             return View();

@@ -19,6 +19,8 @@ namespace assignment1.Controllers
         }
 
         // GET: Technicians
+        [HttpGet]
+        [Route("technicians")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Technicians.ToListAsync());

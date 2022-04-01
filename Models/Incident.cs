@@ -33,7 +33,7 @@ namespace assignment1.Models
 
         [Display(Name="Date Opened")]
         [Required(ErrorMessage = "Open date is required.")]
-        public DateTime DateOpened { get; set; } = DateTime.Now;
+        public DateTime DateOpened { get; set; } = DateTime.Now.Date;
 
         [Display(Name="Date Closed")]
         public DateTime? DateClosed { get; set; }

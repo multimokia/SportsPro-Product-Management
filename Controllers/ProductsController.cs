@@ -19,6 +19,7 @@ namespace assignment1.Controllers
         }
 
         [HttpGet]
+        [Route("products")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Products.ToListAsync());

@@ -22,6 +22,8 @@ namespace assignment1.Controllers
 
         // GET: Incidents
         [HttpGet]
+        [Route("incidents")]
+        [Route("incidents/{filter?}")]
         public async Task<IActionResult> Index(string filter)
         {
             var incidents = await _context.Incidents
