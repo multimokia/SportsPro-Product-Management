@@ -9,10 +9,12 @@ namespace assignment1.Models
         [Key]
         public long IncidentId { get; set; }
 
+        [Display(Name="Customer")]
         [Required(ErrorMessage = "Customer is required.")]
         public long CustomerId { get; set; }
         public Customer Customer { get; set; }
 
+        [Display(Name="Product")]
         [Required(ErrorMessage = "Product is required.")]
         public string ProductId { get; set; }
         public Product Product { get; set; }
@@ -24,6 +26,7 @@ namespace assignment1.Models
         public string Description { get; set; }
 
         #nullable enable
+        [Display(Name="Technician")]
         public long? TechnicianId { get; set; }
         public Technician? Technician { get; set; }
         #nullable restore
