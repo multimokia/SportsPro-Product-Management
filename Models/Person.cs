@@ -38,9 +38,10 @@ namespace assignment1.Models
         /// <summary>
         /// Person's country
         /// </summary>
-        [Required(ErrorMessage="Country is required")]
+        [Required(ErrorMessage="Country is required.")]
         public string Country { get; set; }
 
+        #nullable enable
         /// <summary>
         /// Person's email address (optional)
         /// </summary>
@@ -53,5 +54,7 @@ namespace assignment1.Models
         [DataType(DataType.PhoneNumber)]
         [RegularExpression(@"^\(\d{3}\)-\d{3}-\d{4}$", ErrorMessage = "Phone number must be in format (xxx)-xxx-xxx")]
         public string? PhoneNumber { get; set; }
+
+        #nullable restore
     }
 }

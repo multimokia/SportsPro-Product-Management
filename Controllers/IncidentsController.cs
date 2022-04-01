@@ -30,15 +30,15 @@ namespace assignment1.Controllers
                 .Include(i => i.Technician)
                 .ToListAsync();
 
+            incidents = incidents.Where(i => {
+                if (filter == "open")
+                    { return i.isOpen; }
+                else if (filter == "unassigned")
+                    { return i.isUnassigned; }
+                else
+                    { return true; }
+            }).ToList();
 
-            if (filter == "open")
-            {
-                incidents = (from i in incidents where i.isOpen select i).ToList();
-            }
-            else if (filter == "unassigned")
-            {
-                incidents = (from i in incidents where i.isUnassigned select i).ToList();
-            }
             return View(incidents);
         }
 
