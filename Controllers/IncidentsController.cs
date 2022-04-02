@@ -144,15 +144,17 @@ namespace assignment1.Controllers
             if (incident == null)
                 { return NotFound(); }
 
+            incident.Customer = await _context.Customers.FindAsync(incident.CustomerId);
+            incident.Product = await _context.Products.FindAsync(incident.ProductId);
+            incident.Technician = await _context.Technicians.FindAsync(incident.TechnicianId);
+
             return View(
                 new IncidentViewModel() {
                     Incident = incident,
+                    IncidentId = incident.IncidentId,
                     CustomerId = incident.CustomerId,
-                    Customer = incident.Customer,
                     ProductId = incident.ProductId,
-                    Product = incident.Product,
                     TechnicianId = incident.TechnicianId,
-                    Technician = incident.Technician,
                     Title = incident.Title,
                     Description = incident.Description,
                     DateOpened = incident.DateOpened,
@@ -177,18 +179,25 @@ namespace assignment1.Controllers
             );
         }
 
-        // POST: Incidents/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("incidents/edit/{id?}")]
         public async Task<IActionResult> Edit(long id, Incident incident)
         {
             if (id != incident.IncidentId)
-                { return NotFound(); }
+            {
+                return NotFound();
+            }
+
+
+            incident.Customer = await _context.Customers.FindAsync(incident.CustomerId);
+            incident.Product = await _context.Products.FindAsync(incident.ProductId);
+            incident.Technician = await _context.Technicians.FindAsync(incident.TechnicianId);
 
             if (ModelState.IsValid)
             {
+                Console.WriteLine($"url id: {id} | form id: {incident.IncidentId}, {incident.Customer}");
                 try
                 {
                     _context.Update(incident);
@@ -208,12 +217,10 @@ namespace assignment1.Controllers
             return View(
                 new IncidentViewModel() {
                     Incident = incident,
+                    IncidentId = incident.IncidentId,
                     CustomerId = incident.CustomerId,
-                    Customer = incident.Customer,
                     ProductId = incident.ProductId,
-                    Product = incident.Product,
                     TechnicianId = incident.TechnicianId,
-                    Technician = incident.Technician,
                     Title = incident.Title,
                     Description = incident.Description,
                     DateOpened = incident.DateOpened,
