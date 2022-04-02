@@ -93,19 +93,9 @@ namespace assignment1.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(product);
-                    await _context.SaveChangesAsync();
-                    TempData["AlertMessage-important"] = product.Name+" updated! Check the details!";
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProductExists(product.ProductId))
-                        { return NotFound(); }
-                    else
-                        { throw; }
-                }
+                _context.Update(product);
+                await _context.SaveChangesAsync();
+                TempData["AlertMessage-important"] = product.Name+" updated! Check the details!";
                 return RedirectToAction(nameof(Index));
             }
 
@@ -142,9 +132,10 @@ namespace assignment1.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProductExists(string id)
+        [HttpGet]
+        public JsonResult ProductExists(string id)
         {
-            return _context.Products.Any(e => e.ProductId == id);
+            return Json(_context.Products.Any(e => e.ProductId == id));
         }
     }
 }

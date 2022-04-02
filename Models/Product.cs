@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
 
 namespace assignment1.Models
 {
@@ -7,6 +8,7 @@ namespace assignment1.Models
     {
         [Key]
         [Required(ErrorMessage="Product code is required")]
+        [Remote("ProductExists", "Products", ErrorMessage="Product code already exists.")]
         public string ProductId { get; set; } // Product code
 
         [Required(ErrorMessage="Product name is required")]

@@ -25,23 +25,30 @@ namespace assignment1.Controllers
         [Route("incidents/{filter?}")]
         public async Task<IActionResult> Index(string filter)
         {
+            var incidents = await _context.Incidents
+                .Include(i => i.Customer)
+                .Include(i => i.Product)
+                .Include(i => i.Technician)
+                .ToListAsync();
+
+            if (filter == "open") {
+                incidents = incidents.Where(i => i.isOpen).ToList();
+            }
+            else if (filter == "unassigned") {
+                incidents = incidents.Where(i => i.isUnassigned).ToList();
+            }
+
             return View(new IncidentViewModel() {
                 PageTitle = "Incidents",
-                Incidents = await _context.Incidents
-                    .Include(i => i.Customer)
-                    .Include(i => i.Product)
-                    .Include(i => i.Technician)
-                    .ToListAsync(),
+                Incidents = incidents,
             });
         }
 
         [HttpGet]
-        public async Task<IActionResult> Details(long? id)
+        [Route("incidents/details/{id}")]
+        public async Task<IActionResult> Details(long id)
         {
-            if (id == null)
-                { return NotFound(); }
-
-            var incident = await _context.Incidents
+            Incident? incident = await _context.Incidents
                 .Include(i => i.Customer)
                 .Include(i => i.Product)
                 .Include(i => i.Technician)
@@ -280,7 +287,7 @@ namespace assignment1.Controllers
             var incident = await _context.Incidents.FindAsync(id);
             _context.Incidents.Remove(incident);
             await _context.SaveChangesAsync();
-            TempData["AlertMessage-delete"] = "Customer ID " + incident.CustomerId + " incident file deleted!";
+            TempData["AlertMessage-delete"] = $"Customer ID {incident.CustomerId} incident file deleted!";
             return RedirectToAction(nameof(Index));
         }
 
