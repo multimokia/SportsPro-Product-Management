@@ -1,4 +1,4 @@
-﻿@model assignment1.Models.Incident
+﻿@model assignment1.ViewModels.IncidentViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -31,14 +31,14 @@
         <div class="row justify-content-between text-left form_wrapper">
             <div class="form-group col-sm-6 flex-column d-flex">
                 <label asp-for="CustomerId" class="control-label">Customer</label>
-                <select class="form-select" asp-for="CustomerId" asp-items="@ViewBag.Customers">
+                <select class="form-select" asp-for="CustomerId" asp-items="@Model.Customers">
                     <option value="">Select a customer</option>
                 </select>
                 <span asp-validation-for="Customer" class="text-danger"></span>
             </div>
             <div class="form-group col-sm-6 flex-column d-flex">
                 <label asp-for="ProductId" class="control-label">Product</label>
-                <select class="form-select" asp-for="ProductId" asp-items="@ViewBag.Products">
+                <select class="form-select" asp-for="ProductId" asp-items="@Model.Products">
                     <option value="">Select a product</option>
                 </select>
                 <span asp-validation-for="ProductId" class="text-danger"></span>
@@ -57,7 +57,7 @@
         <div class="row justify-content-between text-left form_wrapper">
             <div class="form-group col-sm-4 flex-column d-flex">
                 <label asp-for="TechnicianId" class="control-label">Technician</label>
-                <select class="form-select" asp-for="TechnicianId" asp-items="@ViewBag.Technicians">
+                <select class="form-select" asp-for="TechnicianId" asp-items="@Model.Technicians">
                     <option value="">Select a technician</option>
                 </select>
                 <span asp-validation-for="TechnicianId" class="text-danger"></span>

@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using assignment1.Models;
-using System.Web;
 using assignment1.ViewModels;
 
 namespace assignment1.Controllers
@@ -26,22 +25,14 @@ namespace assignment1.Controllers
         [Route("incidents/{filter?}")]
         public async Task<IActionResult> Index(string filter)
         {
-            var incidents = await _context.Incidents
-                .Include(i => i.Customer)
-                .Include(i => i.Product)
-                .Include(i => i.Technician)
-                .ToListAsync();
-
-            incidents = incidents.Where(i => {
-                if (filter == "open")
-                    { return i.isOpen; }
-                else if (filter == "unassigned")
-                    { return i.isUnassigned; }
-                else
-                    { return true; }
-            }).ToList();
-
-            return View(incidents);
+            return View(new IncidentViewModel() {
+                PageTitle = "Incidents",
+                Incidents = await _context.Incidents
+                    .Include(i => i.Customer)
+                    .Include(i => i.Product)
+                    .Include(i => i.Technician)
+                    .ToListAsync(),
+            });
         }
 
         [HttpGet]
@@ -59,25 +50,21 @@ namespace assignment1.Controllers
             if (incident == null)
                 { return NotFound(); }
 
-            ViewBag.Customers = (
-                from c in _context.Customers
-                orderby c.Name
-                select new SelectListItem(c.Name, c.CustomerId.ToString())
+            return View(
+                new IncidentViewModel() {
+                    Incident = incident,
+                    CustomerId = incident.CustomerId,
+                    Customer = incident.Customer,
+                    ProductId = incident.ProductId,
+                    Product = incident.Product,
+                    TechnicianId = incident.TechnicianId,
+                    Technician = incident.Technician,
+                    Title = incident.Title,
+                    Description = incident.Description,
+                    DateOpened = incident.DateOpened,
+                    DateClosed = incident.DateClosed
+                }
             );
-
-            ViewBag.Products = (
-                from p in _context.Products
-                orderby p.Name
-                select new SelectListItem(p.Name, p.ProductId.ToString())
-            );
-
-            ViewBag.Technicians = (
-                from t in _context.Technicians
-                orderby t.Name
-                select new SelectListItem(t.Name, t.TechnicianId.ToString())
-            );
-
-            return View(incident);
         }
 
         // GET: Incidents/Create
@@ -85,25 +72,25 @@ namespace assignment1.Controllers
         [Route("incidents/create")]
         public IActionResult Create()
         {
-            ViewBag.Customers = (
-                from c in _context.Customers
-                orderby c.Name
-                select new SelectListItem(c.Name, c.CustomerId.ToString())
+            return View(
+                new IncidentViewModel() {
+                    Customers = (
+                        from c in _context.Customers
+                        orderby c.Name
+                        select new SelectListItem(c.Name, c.CustomerId.ToString())
+                    ),
+                    Products = (
+                        from p in _context.Products
+                        orderby p.Name
+                        select new SelectListItem(p.Name, p.ProductId.ToString())
+                    ),
+                    Technicians = (
+                        from t in _context.Technicians
+                        orderby t.Name
+                        select new SelectListItem(t.Name, t.TechnicianId.ToString())
+                    )
+                }
             );
-
-            ViewBag.Products = (
-                from p in _context.Products
-                orderby p.Name
-                select new SelectListItem(p.Name, p.ProductId.ToString())
-            );
-
-            ViewBag.Technicians = (
-                from t in _context.Technicians
-                orderby t.Name
-                select new SelectListItem(t.Name, t.TechnicianId.ToString())
-            );
-
-            return View(new Incident());
         }
 
         // POST: Incidents/Create
@@ -123,25 +110,26 @@ namespace assignment1.Controllers
             }
             else
             {
-                ViewBag.Customers = (
-                    from c in _context.Customers
-                    orderby c.Name
-                    select new SelectListItem(c.Name, c.CustomerId.ToString())
-                );
-
-                ViewBag.Products = (
-                    from p in _context.Products
-                    orderby p.Name
-                    select new SelectListItem(p.Name, p.ProductId.ToString())
-                );
-
-                ViewBag.Technicians = (
-                    from t in _context.Technicians
-                    orderby t.Name
-                    select new SelectListItem(t.Name, t.TechnicianId.ToString())
+                return View(
+                    new IncidentViewModel() {
+                        Customers = (
+                            from c in _context.Customers
+                            orderby c.Name
+                            select new SelectListItem(c.Name, c.CustomerId.ToString())
+                        ),
+                        Products = (
+                            from p in _context.Products
+                            orderby p.Name
+                            select new SelectListItem(p.Name, p.ProductId.ToString())
+                        ),
+                        Technicians = (
+                            from t in _context.Technicians
+                            orderby t.Name
+                            select new SelectListItem(t.Name, t.TechnicianId.ToString())
+                        )
+                    }
                 );
             }
-            return View(incident);
         }
 
         [HttpGet]
@@ -156,25 +144,37 @@ namespace assignment1.Controllers
             if (incident == null)
                 { return NotFound(); }
 
-            ViewBag.Customers = (
-                from c in _context.Customers
-                orderby c.Name
-                select new SelectListItem(c.Name, c.CustomerId.ToString())
-            );
+            return View(
+                new IncidentViewModel() {
+                    Incident = incident,
+                    CustomerId = incident.CustomerId,
+                    Customer = incident.Customer,
+                    ProductId = incident.ProductId,
+                    Product = incident.Product,
+                    TechnicianId = incident.TechnicianId,
+                    Technician = incident.Technician,
+                    Title = incident.Title,
+                    Description = incident.Description,
+                    DateOpened = incident.DateOpened,
+                    DateClosed = incident.DateClosed,
 
-            ViewBag.Products = (
-                from p in _context.Products
-                orderby p.Name
-                select new SelectListItem(p.Name, p.ProductId.ToString())
+                    Customers = (
+                        from c in _context.Customers
+                        orderby c.Name
+                        select new SelectListItem(c.Name, c.CustomerId.ToString())
+                    ),
+                    Products = (
+                        from p in _context.Products
+                        orderby p.Name
+                        select new SelectListItem(p.Name, p.ProductId.ToString())
+                    ),
+                    Technicians = (
+                        from t in _context.Technicians
+                        orderby t.Name
+                        select new SelectListItem(t.Name, t.TechnicianId.ToString())
+                    )
+                }
             );
-
-            ViewBag.Technicians = (
-                from t in _context.Technicians
-                orderby t.Name
-                select new SelectListItem(t.Name, t.TechnicianId.ToString())
-            );
-
-            return View(incident);
         }
 
         // POST: Incidents/Edit/5
@@ -187,17 +187,13 @@ namespace assignment1.Controllers
             if (id != incident.IncidentId)
                 { return NotFound(); }
 
-            ViewBag.Customers = _context.Customers.OrderBy((x) => x.Name).ToList();
-            ViewBag.Products = _context.Products.OrderBy((x) => x.Name).ToList();
-            ViewBag.Technicians = _context.Technicians.OrderBy((x) => x.Name).ToList();
-
             if (ModelState.IsValid)
             {
                 try
                 {
                     _context.Update(incident);
                     await _context.SaveChangesAsync();
-                    TempData["AlertMessage-important"] = "Customer " + incident.Customer.Name + " incident file updated! Check the details!";
+                    TempData["AlertMessage-important"] = $"Customer {incident.Customer.Name} incident file updated! Check the details!";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -208,7 +204,38 @@ namespace assignment1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(incident);
+
+            return View(
+                new IncidentViewModel() {
+                    Incident = incident,
+                    CustomerId = incident.CustomerId,
+                    Customer = incident.Customer,
+                    ProductId = incident.ProductId,
+                    Product = incident.Product,
+                    TechnicianId = incident.TechnicianId,
+                    Technician = incident.Technician,
+                    Title = incident.Title,
+                    Description = incident.Description,
+                    DateOpened = incident.DateOpened,
+                    DateClosed = incident.DateClosed,
+
+                    Customers = (
+                        from c in _context.Customers
+                        orderby c.Name
+                        select new SelectListItem(c.Name, c.CustomerId.ToString())
+                    ),
+                    Products = (
+                        from p in _context.Products
+                        orderby p.Name
+                        select new SelectListItem(p.Name, p.ProductId.ToString())
+                    ),
+                    Technicians = (
+                        from t in _context.Technicians
+                        orderby t.Name
+                        select new SelectListItem(t.Name, t.TechnicianId.ToString())
+                    )
+                }
+            );
         }
 
         // GET: Incidents/Delete/5
@@ -222,7 +249,20 @@ namespace assignment1.Controllers
             if (incident == null)
                 { return NotFound(); }
 
-            return View(incident);
+            return View(
+                new IncidentViewModel() {
+                    Incident = incident,
+                    CustomerId = incident.CustomerId,
+                    Customer = incident.Customer,
+                    ProductId = incident.ProductId,
+                    Product = incident.Product,
+                    TechnicianId = incident.TechnicianId,
+                    Technician = incident.Technician,
+                    Title = incident.Title,
+                    Description = incident.Description,
+                    DateOpened = incident.DateOpened,
+                    DateClosed = incident.DateClosed,
+                });
         }
 
         // POST: Incidents/Delete/5
@@ -245,7 +285,12 @@ namespace assignment1.Controllers
 
     public static class MvcExtensions
     {
-        public static string ActiveClass(this IHtmlHelper htmlHelper, string controllers = null, string actions = null, string cssClass = "active")
+        public static string ActiveClass(
+            this IHtmlHelper htmlHelper,
+            string controllers = null,
+            string actions = null,
+            string cssClass = "active"
+        )
         {
             var currentController = htmlHelper?.ViewContext.RouteData.Values["controller"] as string;
             var currentAction = htmlHelper?.ViewContext.RouteData.Values["action"] as string;
@@ -253,9 +298,10 @@ namespace assignment1.Controllers
             var acceptedControllers = (controllers ?? currentController ?? "").Split(',');
             var acceptedActions = (actions ?? currentAction ?? "").Split(',');
 
-            return acceptedControllers.Contains(currentController) && acceptedActions.Contains(currentAction)
-                ? cssClass
-                : "";
+            return (
+                acceptedControllers.Contains(currentController) && acceptedActions.Contains(currentAction)
+                ? cssClass : ""
+            );
         }
     }
 

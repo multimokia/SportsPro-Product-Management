@@ -1,9 +1,9 @@
 ﻿@using assignment1.Controllers
-@model IEnumerable<assignment1.Models.Incident>
+@model assignment1.ViewModels.IncidentViewModel
 @{
-    ViewData["Title"] = "Incidents";
+    ViewData["Title"] = Model.PageTitle;
 }
-<div class="jumbotron jumbotron-fluid" data-aos="fade-in  " >
+<div class="jumbotron jumbotron-fluid" data-aos="fade-in  ">
     <div class="container" data-aos="fade-in  " data-aos-delay="200" data-aos-duration="1500">
         <img src="https://img.icons8.com/external-fauzidea-gradient-fauzidea/64/000000/external-sport-back-to-school-fauzidea-gradient-fauzidea.png"
             style="width:50px; margin: 10px auto; display:block;" />
@@ -15,66 +15,86 @@
 </div>
 
 <div class="container">
-       @if(TempData["AlertMessage-successful"] != null)
-{
-    <div class = "alert alert-success">
-        @TempData["AlertMessage-successful"]
-        <button type="button" class = "close" data-dismiss="alert">
-            <span>&times;</span>
-            @*<span>x</span>*@
-        </button>
-    </div>   
-}
+    @if (TempData["AlertMessage-successful"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["AlertMessage-successful"]
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+        </div>
+    }
 
-@if (TempData["AlertMessage-important"] != null)
-{
- <div class = "alert alert-info">
-        @TempData["AlertMessage-important"]
-        <button type="button" class = "close" data-dismiss="alert">
-            <span>&times;</span>
-            @*<span>x</span>*@
-        </button>
-    </div>     
-}
-@if (TempData["AlertMessage-delete"] != null)
-{
-<div class = "alert alert-danger">
-        @TempData["AlertMessage-delete"]
-        <button type="button" class = "close" data-dismiss="alert">
-            <span>&times;</span>
-            @*<span>x</span>*@
-        </button>
-        </div>    
-}
-<br/>
+    @if (TempData["AlertMessage-important"] != null)
+    {
+        <div class="alert alert-info">
+            @TempData["AlertMessage-important"]
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+        </div>
+    }
+    @if (TempData["AlertMessage-delete"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["AlertMessage-delete"]
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+        </div>
+    }
+    <br />
 
-   <div class="menu_wrap">
+    <div class="menu_wrap">
         <div>
-        <a class="btn btn-primary btn-md" asp-action="Create">Create New</a>
+            <a class="btn btn-primary btn-md" asp-action="Create">Create New</a>
+        </div>
+        <div class="incident_side_menu">
+            <!-- Filters for the table, we'll want to sort by all, unassigned, and open incidents. We will default to all -->
+            <a
+                class='btn btn-primary btn-md @Html.ActiveClass("Incidents", "index", "selected")'
+                style="margin-left:0.5rem"
+                asp-controller="Incidents"
+                asp-action="Index"
+                asp-route-filter="all"
+            >
+                All
+            </a>
+            <a
+                class='btn btn-primary btn-md @Html.ActiveClass("Incidents", "index", "selected")'
+                style="margin-left:0.5rem"
+                asp-controller="Incidents"
+                asp-action="Index"
+                asp-route-filter="unassigned"
+            >
+                Unassigned
+            </a>
+            <a
+                class='btn btn-primary btn-md @Html.ActiveClass("Incidents", "index", "selected")'
+                style="margin-left:0.5rem"
+                asp-controller="Incidents"
+                asp-action="Index"
+                asp-route-filter="open"
+            >
+                Open
+            </a>
+        </div>
     </div>
-    <div class="incident_side_menu">
-        <!-- Filters for the table, we'll want to sort by all, unassigned, and open incidents. We will default to all -->
-            <a class="btn btn-primary btn-md @Html.ActiveClass("Incidents", "index", "selected")" style="margin-left:0.5rem" asp-controller="Incidents" asp-action="Index" asp-route-filter="all">All</a>
-           <a class="btn btn-primary btn-md @Html.ActiveClass("Incidents", "index", "selected")" style="margin-left:0.5rem" asp-controller="Incidents" asp-action="Index" asp-route-filter="unassigned">Unassigned</a>
-            <a class="btn btn-primary btn-md @Html.ActiveClass("Incidents", "index", "selected")" style="margin-left:0.5rem" asp-controller="Incidents" asp-action="Index" asp-route-filter="open">Open</a>
-
-    </div>
-   </div>
 
     <table class="table">
         <thead>
             <tr>
-                <th>@Html.DisplayNameFor(model => model.Title)</th>
-                <th>@Html.DisplayNameFor(model => model.Customer)</th>
-                <th>@Html.DisplayNameFor(model => model.Product)</th>
-                <th>@Html.DisplayNameFor(model => model.Technician)</th>
+                <th>Title</th>
+                <th>Customer</th>
+                <th>Product</th>
+                <th>Technician</th>
                 <th>Date Opened</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
             <!-- Loop thru incidents and display the ones that match the filter -->
-            @foreach (var item in Model)
+            @foreach (var item in Model.Incidents)
             {
                 <tr>
                     <td>@item.Title</td>
