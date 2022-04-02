@@ -59,19 +59,49 @@ namespace assignment1.Controllers
             if (incident == null)
                 { return NotFound(); }
 
-            ViewBag.Customers = _context.Customers.OrderBy((x) => x.Name).ToList();
-            ViewBag.Products = _context.Products.OrderBy((x) => x.Name).ToList();
-            ViewBag.Technicians = _context.Technicians.OrderBy((x) => x.Name).ToList();
+            ViewBag.Customers = (
+                from c in _context.Customers
+                orderby c.Name
+                select new SelectListItem(c.Name, c.CustomerId.ToString())
+            );
+
+            ViewBag.Products = (
+                from p in _context.Products
+                orderby p.Name
+                select new SelectListItem(p.Name, p.ProductId.ToString())
+            );
+
+            ViewBag.Technicians = (
+                from t in _context.Technicians
+                orderby t.Name
+                select new SelectListItem(t.Name, t.TechnicianId.ToString())
+            );
+
             return View(incident);
         }
 
         // GET: Incidents/Create
         [HttpGet]
+        [Route("incidents/create")]
         public IActionResult Create()
         {
-            ViewBag.Customers = _context.Customers.OrderBy((x) => x.Name).ToList();
-            ViewBag.Products = _context.Products.OrderBy((x) => x.Name).ToList();
-            ViewBag.Technicians = _context.Technicians.OrderBy((x) => x.Name).ToList();
+            ViewBag.Customers = (
+                from c in _context.Customers
+                orderby c.Name
+                select new SelectListItem(c.Name, c.CustomerId.ToString())
+            );
+
+            ViewBag.Products = (
+                from p in _context.Products
+                orderby p.Name
+                select new SelectListItem(p.Name, p.ProductId.ToString())
+            );
+
+            ViewBag.Technicians = (
+                from t in _context.Technicians
+                orderby t.Name
+                select new SelectListItem(t.Name, t.TechnicianId.ToString())
+            );
 
             return View(new Incident());
         }
@@ -81,6 +111,7 @@ namespace assignment1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("incidents/create")]
         public async Task<IActionResult> Create(Incident incident)
         {
             if (ModelState.IsValid)
@@ -91,15 +122,29 @@ namespace assignment1.Controllers
             }
             else
             {
-                ViewBag.Customers = _context.Customers.OrderBy((x) => x.Name).ToList();
-                ViewBag.Products = _context.Products.OrderBy((x) => x.Name).ToList();
-                ViewBag.Technicians = _context.Technicians.OrderBy((x) => x.Name).ToList();
+                ViewBag.Customers = (
+                    from c in _context.Customers
+                    orderby c.Name
+                    select new SelectListItem(c.Name, c.CustomerId.ToString())
+                );
+
+                ViewBag.Products = (
+                    from p in _context.Products
+                    orderby p.Name
+                    select new SelectListItem(p.Name, p.ProductId.ToString())
+                );
+
+                ViewBag.Technicians = (
+                    from t in _context.Technicians
+                    orderby t.Name
+                    select new SelectListItem(t.Name, t.TechnicianId.ToString())
+                );
             }
             return View(incident);
         }
 
-        // GET: Incidents/Edit/5
         [HttpGet]
+        [Route("incidents/edit/{id?}")]
         public async Task<IActionResult> Edit(long? id)
         {
             if (id == null)
@@ -110,9 +155,23 @@ namespace assignment1.Controllers
             if (incident == null)
                 { return NotFound(); }
 
-            ViewBag.Customers = _context.Customers.OrderBy((x) => x.Name).ToList();
-            ViewBag.Products = _context.Products.OrderBy((x) => x.Name).ToList();
-            ViewBag.Technicians = _context.Technicians.OrderBy((x) => x.Name).ToList();
+            ViewBag.Customers = (
+                from c in _context.Customers
+                orderby c.Name
+                select new SelectListItem(c.Name, c.CustomerId.ToString())
+            );
+
+            ViewBag.Products = (
+                from p in _context.Products
+                orderby p.Name
+                select new SelectListItem(p.Name, p.ProductId.ToString())
+            );
+
+            ViewBag.Technicians = (
+                from t in _context.Technicians
+                orderby t.Name
+                select new SelectListItem(t.Name, t.TechnicianId.ToString())
+            );
 
             return View(incident);
         }

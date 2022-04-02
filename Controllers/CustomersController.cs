@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using assignment1.Models;
 using assignment1.ViewModels;
@@ -13,7 +14,7 @@ namespace assignment1.Controllers
 {
     public class CustomersController : Controller
     {
-        public static string[] Countries = new string[]{
+        private static string[] _countries = new string[]{
             "Afghanistan",
             "Albania",
             "Algeria",
@@ -211,6 +212,9 @@ namespace assignment1.Controllers
             "Zambia",
             "Zimbabwe",
         };
+
+        public static IEnumerable<SelectListItem> Countries = from c in _countries select new SelectListItem(c, c);
+
         private readonly ProductContext _context;
 
         public CustomersController(ProductContext context)
