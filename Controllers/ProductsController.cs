@@ -60,6 +60,7 @@ namespace assignment1.Controllers
             {
                 _context.Add(product);
                 await _context.SaveChangesAsync();
+                TempData["AlertMessage-successful"] = product.Name + " Created Successfully!";
                 return RedirectToAction(nameof(Index));
             }
             return View(product);
@@ -96,6 +97,7 @@ namespace assignment1.Controllers
                 {
                     _context.Update(product);
                     await _context.SaveChangesAsync();
+                    TempData["AlertMessage-important"] = product.Name+" updated! Check the details!";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -136,6 +138,7 @@ namespace assignment1.Controllers
             var product = await _context.Products.FindAsync(id);
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
+            TempData["AlertMessage-delete"] = product.Name + " deleted!";
             return RedirectToAction(nameof(Index));
         }
 

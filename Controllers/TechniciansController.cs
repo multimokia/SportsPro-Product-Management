@@ -62,6 +62,7 @@ namespace assignment1.Controllers
             {
                 _context.Add(technician);
                 await _context.SaveChangesAsync();
+                TempData["AlertMessage-successful"] = "Technician "+technician.Name + " Created Successfully!";
                 return RedirectToAction(nameof(Index));
             }
 
@@ -99,6 +100,7 @@ namespace assignment1.Controllers
                 {
                     _context.Update(technician);
                     await _context.SaveChangesAsync();
+                    TempData["AlertMessage-important"] = "Technician " + technician.Name + " updated! Check the details!";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -140,6 +142,7 @@ namespace assignment1.Controllers
             var technician = await _context.Technicians.FindAsync(id);
             _context.Technicians.Remove(technician);
             await _context.SaveChangesAsync();
+            TempData["AlertMessage-delete"] = "Technician " + technician.Name + " deleted!";
             return RedirectToAction(nameof(Index));
         }
 

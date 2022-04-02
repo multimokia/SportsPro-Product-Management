@@ -34,3 +34,11 @@
         carousels();
     })(jQuery);
 })();
+
+/*site alert timeset script file*/
+
+window.setTimeout(function () {
+    $(".alert").fadeTo(500, 0).fadeOut(500, function () {
+        $(this).remove();
+    });
+},5000);

@@ -118,6 +118,7 @@ namespace assignment1.Controllers
             {
                 _context.Add(incident);
                 await _context.SaveChangesAsync();
+                TempData["AlertMessage-successful"] = "Customer ID " + incident.CustomerId + " incident file Created Successfully!";
                 return RedirectToAction(nameof(Index));
             }
             else
@@ -196,6 +197,7 @@ namespace assignment1.Controllers
                 {
                     _context.Update(incident);
                     await _context.SaveChangesAsync();
+                    TempData["AlertMessage-important"] = "Customer " + incident.Customer.Name + " incident file updated! Check the details!";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -231,6 +233,7 @@ namespace assignment1.Controllers
             var incident = await _context.Incidents.FindAsync(id);
             _context.Incidents.Remove(incident);
             await _context.SaveChangesAsync();
+            TempData["AlertMessage-delete"] = "Customer ID " + incident.CustomerId + " incident file deleted!";
             return RedirectToAction(nameof(Index));
         }
 
@@ -239,4 +242,21 @@ namespace assignment1.Controllers
             return _context.Incidents.Any(e => e.IncidentId == id);
         }
     }
+
+    public static class MvcExtensions
+    {
+        public static string ActiveClass(this IHtmlHelper htmlHelper, string controllers = null, string actions = null, string cssClass = "active")
+        {
+            var currentController = htmlHelper?.ViewContext.RouteData.Values["controller"] as string;
+            var currentAction = htmlHelper?.ViewContext.RouteData.Values["action"] as string;
+
+            var acceptedControllers = (controllers ?? currentController ?? "").Split(',');
+            var acceptedActions = (actions ?? currentAction ?? "").Split(',');
+
+            return acceptedControllers.Contains(currentController) && acceptedActions.Contains(currentAction)
+                ? cssClass
+                : "";
+        }
+    }
+
 }

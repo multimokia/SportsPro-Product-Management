@@ -15,6 +15,38 @@ application should display the Technician Manager page.</p>
 
 
 <div class="container">
+           @if(TempData["AlertMessage-successful"] != null)
+{
+    <div class = "alert alert-success">
+        @TempData["AlertMessage-successful"]
+        <button type="button" class = "close" data-dismiss="alert">
+            <span>&times;</span>
+            @*<span>x</span>*@
+        </button>
+    </div>   
+}
+
+@if (TempData["AlertMessage-important"] != null)
+{
+ <div class = "alert alert-info">
+        @TempData["AlertMessage-important"]
+        <button type="button" class = "close" data-dismiss="alert">
+            <span>&times;</span>
+            @*<span>x</span>*@
+        </button>
+    </div>     
+}
+@if (TempData["AlertMessage-delete"] != null)
+{
+<div class = "alert alert-danger">
+        @TempData["AlertMessage-delete"]
+        <button type="button" class = "close" data-dismiss="alert">
+            <span>&times;</span>
+            @*<span>x</span>*@
+        </button>
+        </div>    
+}
+<br/>
     <p>
     <a class="btn btn-primary btn-md" asp-action="Create">Create New</a>
 </p>
