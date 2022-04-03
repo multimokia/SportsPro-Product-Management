@@ -10,6 +10,7 @@ namespace assignment1.Models
         public DbSet<assignment1.Models.Customer> Customers { get; set; }
         public DbSet<assignment1.Models.Technician> Technicians { get; set; }
         public DbSet<assignment1.Models.Incident> Incidents { get; set; }
+        public DbSet<assignment1.Models.Registration> Registrations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -17,6 +18,7 @@ namespace assignment1.Models
             modelBuilder.Entity<Customer>().ToTable("Customer");
             modelBuilder.Entity<Technician>().ToTable("Technician");
             modelBuilder.Entity<Incident>().ToTable("Incident");
+            modelBuilder.Entity<Registration>().ToTable("Registration");
         }
 
     }
