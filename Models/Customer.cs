@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
+using System.ComponentModel.DataAnnotations.Schema;
 namespace assignment1.Models
 {
     public class Customer : Person
@@ -18,5 +19,12 @@ namespace assignment1.Models
         public string? EmailAddress { get; set; }
 
         #nullable restore
+
+        /// <summary>
+        /// An array of product Ids registered to this customer
+        /// </summary>
+        public List<Product> Products { get; set; }
+        [NotMapped]
+        public List<string> ProductIds { get; set; }
     }
 }

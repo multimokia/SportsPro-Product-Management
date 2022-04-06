@@ -1,29 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 using assignment1.Models;
 
 namespace assignment1.Controllers
 {
     public class RegistrationsController : Controller
     {
-        private readonly ILogger<RegistrationsController> _logger;
-        public IActionResult Index()
+        private readonly ProductContext _context;
+
+        public RegistrationsController(ProductContext context)
         {
-            return View();
+            _context = context;
         }
 
-        public IActionResult Privacy()
+        [Route("/registrations/{customerId?}")]
+        public async Task<IActionResult> Index(long? customerId)
         {
+            ViewBag.Customers = await _context.Customers.Include(c => c.ProductIds).ToListAsync();
             return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public async Task<IActionResult> Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }

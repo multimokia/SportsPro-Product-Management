@@ -133,9 +133,9 @@ namespace assignment1.Controllers
         }
 
         [HttpGet]
-        public JsonResult ProductExists(string id)
+        public JsonResult ProductExists(string ProductCode)
         {
-            return Json(_context.Products.Any(e => e.ProductId == id));
+            return Json(!_context.Products.Any(e => e.ProductId == ProductCode));
         }
     }
 }

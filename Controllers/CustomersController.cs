@@ -250,6 +250,7 @@ namespace assignment1.Controllers
         public IActionResult Create()
         {
             ViewBag.Countries = CustomersController.Countries;
+            ViewBag.Products = _context.Products.ToList();
             return View();
         }
 
@@ -262,6 +263,15 @@ namespace assignment1.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Parse the selected products
+                var selectedProducts = Request.Form["ProductIds"];
+
+                foreach (string productId in selectedProducts)
+                {
+                    Console.WriteLine("ProductId: " + productId);
+                    customer.ProductIds.Add(productId);
+                }
+
                 _context.Add(customer);
                 await _context.SaveChangesAsync();
                 TempData["AlertMessage-successful"] = "Customer " + customer.Name + " Created Successfully!";
@@ -287,6 +297,7 @@ namespace assignment1.Controllers
             }
 
             ViewBag.Countries = CustomersController.Countries;
+            ViewBag.Products = _context.Products.ToList();
             return View(customer);
         }
 
@@ -302,6 +313,7 @@ namespace assignment1.Controllers
                 return NotFound();
             }
 
+            ModelState.Remove("EmailAddress");
             if (ModelState.IsValid)
             {
                 try
@@ -313,13 +325,9 @@ namespace assignment1.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!CustomerExists(customer.CustomerId))
-                    {
-                        return NotFound();
-                    }
+                        { return NotFound(); }
                     else
-                    {
-                        throw;
-                    }
+                        { throw; }
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -336,8 +344,7 @@ namespace assignment1.Controllers
                 return NotFound();
             }
 
-            var customer = await _context.Customers
-                .FirstOrDefaultAsync(m => m.CustomerId == id);
+            var customer = await _context.Customers.FirstOrDefaultAsync(m => m.CustomerId == id);
             if (customer == null)
             {
                 return NotFound();

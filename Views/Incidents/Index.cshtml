@@ -52,7 +52,7 @@
         <div class="incident_side_menu">
             <!-- Filters for the table, we'll want to sort by all, unassigned, and open incidents. We will default to all -->
             <a
-                class='btn btn-primary btn-md @Html.ActiveClass("Incidents", "index", "selected")'
+                class='btn btn-primary btn-md'
                 style="margin-left:0.5rem"
                 asp-controller="Incidents"
                 asp-action="Index"
@@ -61,7 +61,7 @@
                 All
             </a>
             <a
-                class='btn btn-primary btn-md @Html.ActiveClass("Incidents", "index", "selected")'
+                class='btn btn-primary btn-md'
                 style="margin-left:0.5rem"
                 asp-controller="Incidents"
                 asp-action="Index"
@@ -70,7 +70,7 @@
                 Unassigned
             </a>
             <a
-                class='btn btn-primary btn-md @Html.ActiveClass("Incidents", "index", "selected")'
+                class='btn btn-primary btn-md'
                 style="margin-left:0.5rem"
                 asp-controller="Incidents"
                 asp-action="Index"
@@ -112,3 +112,17 @@
         </tbody>
     </table>
 </div>
+
+<script>
+    /*site alert timeset script file*/
+  window.setTimeout(function () {
+      $(".alert").fadeTo(500, 0).fadeOut(500, function () {
+          $(this).remove();
+      });
+  },5000);
+
+    /*site active button script */
+  $(document).ready(function(){
+      $('.btn .btn-primary .btn-md').find('[href=]' + window.loaction.pathname +'"]"').parent().addClass('.selected');
+  });
+  </script>
