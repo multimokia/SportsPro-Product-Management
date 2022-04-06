@@ -20,6 +20,7 @@
     <form class="form-card" asp-action="Edit">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="TechnicianId" />
+        <input type="hidden" asp-for="EmailAddress" />
         <div class="row justify-content-between text-left form_wrapper">
             <div class="form-group col-sm-6 flex-column d-flex">
                 <label asp-for="Name" class="control-label"></label>
@@ -56,12 +57,6 @@
         </div>
 
         <div class="row justify-content-between text-left form_wrapper">
-
-            <div class="form-group col-sm-6 flex-column d-flex">
-                <label asp-for="EmailAddress" class="control-label">Email Address</label>
-                <input asp-for="EmailAddress" class="form-control" />
-                <span asp-validation-for="EmailAddress" class="text-danger"></span>
-            </div>
             <div class="form-group col-sm-6 flex-column d-flex">
                 <label asp-for="PhoneNumber" class="control-label">Phone Number</label>
                 <input asp-for="PhoneNumber" class="form-control" />
