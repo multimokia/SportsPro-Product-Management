@@ -296,6 +296,9 @@ namespace assignment1.Controllers
                 return NotFound();
             }
 
+            if (customer.ProductIds == null)
+                customer.ProductIds = new List<string>();
+
             ViewBag.Countries = CustomersController.Countries;
             ViewBag.Products = _context.Products.ToList();
             return View(customer);
@@ -309,18 +312,15 @@ namespace assignment1.Controllers
         public async Task<IActionResult> Edit(long id, Customer customer)
         {
             if (id != customer.CustomerId)
-            {
-                return NotFound();
-            }
+                { return NotFound(); }
 
-            ModelState.Remove("EmailAddress");
             if (ModelState.IsValid)
             {
                 try
                 {
                     _context.Update(customer);
                     await _context.SaveChangesAsync();
-                    TempData["AlertMessage-important"] = "Customer " + customer.Name + " updated! Check the details!";
+                    TempData["AlertMessage-important"] = $"Customer {customer.Name} updated! Check the details!";
                 }
                 catch (DbUpdateConcurrencyException)
                 {

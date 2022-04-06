@@ -42,8 +42,3 @@ window.setTimeout(function () {
         $(this).remove();
     });
 },5000);
-
-
-$(document).ready(function(){
-    $('.btn .btn-primary .btn-md').find('[href=]' + window.loaction.pathname +'"]"').parent().addClass('.selected');
-});

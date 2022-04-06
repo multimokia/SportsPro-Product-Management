@@ -406,7 +406,7 @@ input:focus, textarea:focus {
 /* Incident button action
 -------------------------------------------------- */
 .selected {
-  box-shadow: 2px -1px 10px #ff8787;
+  border: 1px solid #ff8787;
 }
 
 /* Sticky footer styles

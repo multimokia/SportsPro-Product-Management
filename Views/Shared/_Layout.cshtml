@@ -205,6 +205,13 @@
   <script>
     AOS.init();
 
+
+    $(document).ready(function(){
+        $('.incident_side_menu').find('[href="'+window.location.pathname+'"]').addClass('selected')
+  });
+
+
+
   </script>
     <script src="jquery.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)

@@ -1,6 +1,15 @@
-﻿@{
+﻿@model assignment1.Models.Customer
+@{
     ViewData["Title"] = "Registrations";
 }
+<script>
+    function navToSelectedCustomer() {
+        let customerId = document.getElementById('customerSelection').value;
+        if (customerId) {
+            window.location.href = '/registrations/' + customerId;
+        }
+    }
+</script>
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h4 class="text-center mb-4">Select customer</h4>
@@ -8,10 +17,49 @@
     <div class="row justify-content-between text-left form_wrapper">
         <div class="form-group col-6 flex-column d-flex">
             <label class="control-label"></label>
-            <select class="form-select" asp-items="@ViewBag.Customers">
+            <select id="customerSelection" class="form-select" asp-items="@ViewBag.Customers">
                 <option value="">Select a customer</option>
             </select>
+            <button
+                class='btn btn-primary btn-md '
+                style="margin-left:0.5rem"
+                onclick="navToSelectedCustomer()">
+                Go
+            </button>
         </div>
 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product Code</th>
+                <th>Product Name</th>
+                <th>Yearly Price</th>
+                <th>Release Date</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.Products)
+            {
+                <tr>
+                    <td>
+                        @item.ProductId
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.YearlyPrice
+                    </td>
+                    <td>
+                        @item.ReleaseDate
+                    </td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" asp-controller="Products" asp-action="Edit" asp-route-id="@item.ProductId">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
     </div>
 </div>

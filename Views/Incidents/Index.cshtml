@@ -51,8 +51,9 @@
         </div>
         <div class="incident_side_menu">
             <!-- Filters for the table, we'll want to sort by all, unassigned, and open incidents. We will default to all -->
+            <div class="button_wrap">
             <a
-                class='btn btn-primary btn-md'
+                class='btn btn-primary'
                 style="margin-left:0.5rem"
                 asp-controller="Incidents"
                 asp-action="Index"
@@ -60,6 +61,7 @@
             >
                 All
             </a>
+            </div>
             <a
                 class='btn btn-primary btn-md'
                 style="margin-left:0.5rem"
@@ -69,8 +71,9 @@
             >
                 Unassigned
             </a>
+
             <a
-                class='btn btn-primary btn-md'
+                class='btn btn-primary btn-md '
                 style="margin-left:0.5rem"
                 asp-controller="Incidents"
                 asp-action="Index"
@@ -78,6 +81,7 @@
             >
                 Open
             </a>
+
         </div>
     </div>
 
@@ -112,17 +116,4 @@
         </tbody>
     </table>
 </div>
-
-<script>
-    /*site alert timeset script file*/
-  window.setTimeout(function () {
-      $(".alert").fadeTo(500, 0).fadeOut(500, function () {
-          $(this).remove();
-      });
-  },5000);
-
-    /*site active button script */
-  $(document).ready(function(){
-      $('.btn .btn-primary .btn-md').find('[href=]' + window.loaction.pathname +'"]"').parent().addClass('.selected');
-  });
-  </script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
