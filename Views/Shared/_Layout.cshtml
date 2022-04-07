@@ -1,219 +1,211 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - assignment1</title>
 
     <link rel="stylesheet" href="~/css/StyleSheet.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version = "true" />
-    <link rel="stylesheet" href="~/css/testnorminal.css" asp-append-version = "true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/testnorminal.css" asp-append-version="true" />
 
 
     <script src="https://kit.fontawesome.com/f7fb8f5dc1.js" crossorigin="anonymous"></script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,600;0,800;1,100&family=Titillium+Web:ital,wght@0,200;0,300;0,600;0,700;0,900;1,200;1,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,600;0,800;1,100&family=Titillium+Web:ital,wght@0,200;0,300;0,600;0,700;0,900;1,200;1,300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 </head>
+
 <body>
     <header>
-
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark  border-bottom">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class=" collapse navbar-collapse" id="navbarColor02">
-      <ul class=" navbar-nav r">
-        <li class="nav-item">
-        <a class="nav-link " asp-controller="Home" asp-action="Index">Home
-            <span class="visually-hidden">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link " asp-controller="Customers" asp-action="Index">Customers</a>
-        </li>
-        <li class="nav-item">
-         <a class="nav-link "  asp-controller="Products" asp-action="Index">Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" asp-controller="Technicians" asp-action="Index">Technicians</a>
-        </li>
-        <li class="nav-item">
-           <a class="nav-link" asp-controller="Incidents" asp-action="Index">Incidents</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" asp-controller="Registrations" asp-action="Index">Registrations</a>
-        </li>
-
-         <li class="nav-item">
-           <a class="nav-link " asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </li>
-
-
-      </ul>
-
-    </div>
-  </div>
-</nav>
-
-
-
-
-
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+                    aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class=" collapse navbar-collapse" id="navbarColor02">
+                    <ul class=" navbar-nav ">
+                        <li class="nav-item">
+                            <a class="nav-link " asp-controller="Home">Home
+                                <span class="visually-hidden">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-controller="Customers" asp-action="Index">Customers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-controller="Products" asp-action="Index">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Technicians" asp-action="Index">Technicians</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Incidents" asp-action="Index" asp-route-filter="">Incidents</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Registrations" asp-action="Index">Registrations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
     <div style="overflow:hidden;">
-        <main role="main" class="pb-3" >
+        <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-<!-- Footer -->
-<footer class="page-footer font-small unique-color-dark" style="margin-top:5rem;">
+    <!-- Footer -->
+    <footer class="page-footer font-small unique-color-dark" style="margin-top:5rem;">
+        <div class="footer_border">
+            <div class="container-fluid">
+                <!-- Grid row-->
+                <div class="row py-4 d-flex align-items-center">
+                    <!-- Grid column -->
+                    <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                        <h6 class="mb-0">Michael D'Mello | Minkyu (Eric) Kim | Stephanie Cho</h6>
+                    </div>
+                    <!-- Grid column -->
 
-  <div class="footer_border">
-    <div class="container-fluid">
+                    <!-- Grid column -->
+                    <div class="col-md-6 col-lg-7 text-center text-md-right">
 
-      <!-- Grid row-->
-      <div class="row py-4 d-flex align-items-center">
+                    </div>
+                    <!-- Grid column -->
 
-        <!-- Grid column -->
-        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-          <h6 class="mb-0">Michael D'Mello  | Minkyu (Eric) Kim | Stephanie Cho</h6>
+                </div>
+                <!-- Grid row-->
+            </div>
         </div>
-        <!-- Grid column -->
 
-        <!-- Grid column -->
-        <div class="col-md-6 col-lg-7 text-center text-md-right">
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3 footer_bar">
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <!-- Content -->
+                    <h6 class="text-uppercase font-weight-bold">Canada Pain Agency</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>Canada pain Agency is meme company to make fun things. We are always staying up all night until
+                        4am and get brain pain. We are dedicated to improving our services regardless of how much we do.
+                    </p>
 
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">Products</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                        <a href="/Customers">Customers</a>
+                    </p>
+                    <p>
+                        <a href="/Products">Products</a>
+                    </p>
+                    <p>
+                        <a href="/Technicians">Technicians</a>
+                    </p>
+                    <p>
+                        <a href="/Incidents">Incidents</a>
+                    </p>
+                    <p>
+                        <a href="/Registrations">Registrations</a>
+                    </p>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                        <a href="https://michael.lavenderhosted.com/">Your Account</a>
+                    </p>
+                    <p>
+                        <a href="/Registrations">Become an Affiliate</a>
+                    </p>
+                    <p>
+                        <a href="/Registrations">Shipping Rates</a>
+                    </p>
+                    <p>
+                        <a href="/Registrations">Help</a>
+                    </p>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">Contact</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                        <i class="fas fa-home mr-3"></i> Toronto ontario
+                    </p>
+                    <p>
+                        <i class="fas fa-envelope mr-3"></i> info@example.com
+                    </p>
+                    <p>
+                        <i class="fas fa-phone mr-3"></i> + 01 416-522-1234
+                    </p>
+                    <p>
+                        <i class="fas fa-print mr-3"></i> + 01 416-985-2566
+                    </p>
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
         </div>
-        <!-- Grid column -->
+        <!-- Footer Links -->
 
-      </div>
-      <!-- Grid row-->
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2022 Copyright:
+            <a href="/Registrations"> Canada Pain Agency</a>
+        </div>
+        <!-- Copyright -->
 
-    </div>
-  </div>
-
-  <!-- Footer Links -->
-  <div class="container text-center text-md-left mt-5" >
-
-    <!-- Grid row -->
-    <div class="row mt-3 footer_bar">
-
-      <!-- Grid column -->
-      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-
-        <!-- Content -->
-        <h6 class="text-uppercase font-weight-bold">Canada Pain Agency</h6>
-        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>Canada pain Agency is meme company to make fun things.  We are always staying up all night until 4am and get brain pain. We are dedicated to improving our services regardless of how much we do.</p>
-
-      </div>
-      <!-- Grid column -->
-
-      <!-- Grid column -->
-      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-
-        <!-- Links -->
-        <h6 class="text-uppercase font-weight-bold">Products</h6>
-        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>
-          <a href="/Customers">Customers</a>
-        </p>
-        <p>
-          <a href="/Products">Products</a>
-        </p>
-        <p>
-          <a href="/Technicians">Technicians</a>
-        </p>
-        <p>
-          <a href="/Incidents">Incidents</a>
-        </p>
-        <p>
-          <a href="/Registrations">Registrations</a>
-        </p>
-
-      </div>
-      <!-- Grid column -->
-
-      <!-- Grid column -->
-      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-
-        <!-- Links -->
-        <h6 class="text-uppercase font-weight-bold">Useful links</h6>
-        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>
-          <a href="https://michael.lavenderhosted.com/">Your Account</a>
-        </p>
-        <p>
-          <a href="/Registrations">Become an Affiliate</a>
-        </p>
-        <p>
-          <a href="/Registrations">Shipping Rates</a>
-        </p>
-        <p>
-          <a href="/Registrations">Help</a>
-        </p>
-
-      </div>
-      <!-- Grid column -->
-
-      <!-- Grid column -->
-      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-
-        <!-- Links -->
-        <h6 class="text-uppercase font-weight-bold">Contact</h6>
-        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>
-          <i class="fas fa-home mr-3"></i> Toronto ontario</p>
-        <p>
-          <i class="fas fa-envelope mr-3"></i> info@example.com</p>
-        <p>
-          <i class="fas fa-phone mr-3"></i> + 01 416-522-1234</p>
-        <p>
-          <i class="fas fa-print mr-3"></i> + 01 416-985-2566</p>
-
-      </div>
-      <!-- Grid column -->
-
-    </div>
-    <!-- Grid row -->
-
-  </div>
-  <!-- Footer Links -->
-
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2022 Copyright:
-    <a href="/Registrations"> Canada Pain Agency</a>
-  </div>
-  <!-- Copyright -->
-
-</footer>
-<!-- Footer -->
+    </footer>
+    <!-- Footer -->
 
     <script src="~/js/site.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-  <script>
-    AOS.init();
+    <script>
+        AOS.init();
+
+        //main nav highlight
+        $(document).ready(function () {
+            $('.navbar-nav').find(
+                '[href="' + window.location.pathname.substring(0, window.location.pathname.indexOf("/",1)+1) + '"]'
+            ).addClass('main_selected')
+        });
 
 
-    $(document).ready(function(){
-        $('.incident_side_menu').find('[href="'+window.location.pathname+'"]').addClass('selected')
-  });
-
-
-
-  </script>
+    </script>
     <script src="jquery.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

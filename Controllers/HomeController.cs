@@ -20,7 +20,6 @@ namespace assignment1.Controllers
 
         [Route("")]
         [Route("home")]
-        [Route("home/index")]
         public IActionResult Index()
         {
             return View();

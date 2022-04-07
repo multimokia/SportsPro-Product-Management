@@ -14,21 +14,21 @@
     <div class="container">
         <h4 class="text-center mb-4">Select customer</h4>
     </div>
-    <div class="row justify-content-between text-left form_wrapper">
-        <div class="form-group col-6 flex-column d-flex">
+    <div class="container" style="display:flex; margin-top:3rem;">
             <label class="control-label"></label>
-            <select id="customerSelection" class="form-select" asp-items="@ViewBag.Customers">
-                <option value="">Select a customer</option>
-            </select>
-            <button
-                class='btn btn-primary btn-md '
-                style="margin-left:0.5rem"
-                onclick="navToSelectedCustomer()">
-                Go
-            </button>
-        </div>
+                    <select id="customerSelection" class="form-select" style="margin-right:1rem" asp-items="@ViewBag.Customers">
+                        <option value="">Select a customer</option>
+                    </select>
+                <button
+                    class='btn btn-primary btn-md '
+                    style="margin:0; padding:0; width:220px;"
+                    onclick="navToSelectedCustomer()">
+                    Go
+                </button>
 
-    <table class="table">
+    </div>
+    <div class="container" style="display:flex; justify-contents:center; margin-top:3rem;">
+     <table class="table">
         <thead>
             <tr>
                 <th>Product Code</th>
@@ -61,5 +61,6 @@
             }
         </tbody>
     </table>
+    </div>
     </div>
 </div>
