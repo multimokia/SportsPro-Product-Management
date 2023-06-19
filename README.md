@@ -15,13 +15,11 @@ npm install --global sass
 ```
 All SASS files go into `./Styles` and will be automatically compiled from `site.scss` to `./wwwroot/css/site.css`
 
-### ENV VARIABLES (for your .env file)
-- TBD
-
-after using michael's link(https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb?view=sql-server-ver15) to download SQL Server Config Manager, 
-I entered SQL SERVER NETWORK CONFIGURATION (not the 32 bit one) and enabled everything for protocols.
-afterwards, I unconnected from everything in SQL for SQL Server Object Explorer then added SQLEXPRESS.
-the next step is to right click on your SQLEXPRESS and press properties
-then if you scroll to the very top of the properties, you will see "Connection String"
+### This application depends on an SQL Server
+After using [this link](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb?view=sql-server-ver15) to download SQL Server Config Manager, 
+Enter the SQL SERVER NETWORK CONFIGURATION (not 32 bit) and enable everything for protocols.
+Next, disconnect from everything in SQL for SQL Server Object Explorer then added SQLEXPRESS.
+The next step is to right click on your SQLEXPRESS and press properties
+Then if you scroll to the very top of the properties, you will see "Connection String"
 copy that and paste it into Startup.cs and appsettings.json
-then re-run your program and it will work
+then re-run the program and it will work
